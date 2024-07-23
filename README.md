@@ -12,7 +12,7 @@ Constants and an enumeration containing the unit name and the SVG file names pro
 
 This code repository contains a project developed in Object Pascal language under Delphi. You don't know what Delphi is and where to download it ? You'll learn more [on this web site](https://delphi-resources.developpeur-pascal.fr/).
 
-[^1] The generated code is compatible with Delphi 12 Athens and later. The strings used are multiline strings and not classic Pascal strings to simplify generation (nothing prevents you from forking this project and modifying this part for yourself if you need to).
+[^1]: The generated code is compatible with Delphi 12 Athens and later. The strings used are multiline strings and not classic Pascal strings to simplify generation (nothing prevents you from forking this project and modifying this part for yourself if you need to).
 
 ## Using this software
 

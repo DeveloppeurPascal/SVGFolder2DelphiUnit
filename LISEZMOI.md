@@ -12,7 +12,7 @@ Des constantes et une énumération reprenant le nom de l'unité et les noms des
 
 Ce dépôt de code contient un projet développé en langage Pascal Objet sous Delphi. Vous ne savez pas ce qu'est Dephi ni où le télécharger ? Vous en saurez plus [sur ce site web](https://delphi-resources.developpeur-pascal.fr/).
 
-[^1] Le code généré est compatible avec Delphi 12 Athens et les versions suivantes. Les chaînes de caractères utilisées sont des chaînes multiligne et non des chaînes Pascal classiques pour simplifier la génération (rien ne vous empêche de faire un fork de ce projet et modifier cette partie pour vous si besoin).
+[^1]: Le code généré est compatible avec Delphi 12 Athens et les versions suivantes. Les chaînes de caractères utilisées sont des chaînes multiligne et non des chaînes Pascal classiques pour simplifier la génération (rien ne vous empêche de faire un fork de ce projet et modifier cette partie pour vous si besoin).
 
 ## Utiliser ce logiciel
 
