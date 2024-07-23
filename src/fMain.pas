@@ -194,6 +194,8 @@ begin
               DestinationUnit.add('');
               DestinationUnit.add('SetLength(' + ArrayName + ', ' +
                 SVGFilesList.Count.tostring + ');');
+              DestinationUnit.add('');
+              DestinationUnit.add('{$TEXTBLOCK NATIVE XML}');
               for i := 0 to SVGFilesList.Count - 1 do
               begin
                 DestinationUnit.add(ArrayName + '[' +
