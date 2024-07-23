@@ -184,11 +184,129 @@ begin
                     (SVGFilesList[i])) + ' = ' +
                     getConstantName(SVGFilesList[i]) + ');');
               DestinationUnit.add('');
+              DestinationUnit.add(AddSpace(2) + 'T' + ArrayName + ' = class');
+              DestinationUnit.add(AddSpace(2) + 'private');
+              DestinationUnit.add(AddSpace(2) + 'class var');
+              DestinationUnit.add(AddSpace(4) + 'FTag: integer;');
+              DestinationUnit.add(AddSpace(4) + 'FTagBool: Boolean;');
+              DestinationUnit.add(AddSpace(4) + 'FTagFloat: Single;');
+              DestinationUnit.add(AddSpace(4) + 'FTagObject: TObject;');
+              DestinationUnit.add(AddSpace(4) + 'FTagString: string;');
+              DestinationUnit.add
+                (AddSpace(4) +
+                'class procedure SetTag(const Value: integer); static;');
+              DestinationUnit.add
+                (AddSpace(4) +
+                'class procedure SetTagBool(const Value: Boolean); static;');
+              DestinationUnit.add
+                (AddSpace(4) +
+                'class procedure SetTagFloat(const Value: Single); static;');
+              DestinationUnit.add
+                (AddSpace(4) +
+                'class procedure SetTagObject(const Value: TObject); static;');
+              DestinationUnit.add
+                (AddSpace(4) +
+                'class procedure SetTagString(const Value: string); static;');
+              DestinationUnit.add(AddSpace(2) + 'public const');
+              for i := 0 to SVGFilesList.Count - 1 do
+                DestinationUnit.add
+                  (AddSpace(4) + OnlyChar(tpath.GetFileNameWithoutExtension
+                  (SVGFilesList[i])) + ' = ' +
+                  getConstantName(SVGFilesList[i]) + ';');
+              DestinationUnit.add
+                (AddSpace(4) +
+                'class property Tag: integer read FTag write SetTag;');
+              DestinationUnit.add
+                (AddSpace(4) +
+                'class property TagBool: Boolean read FTagBool write SetTagBool;');
+              DestinationUnit.add
+                (AddSpace(4) +
+                'class property TagFloat: Single read FTagFloat write SetTagFloat;');
+              DestinationUnit.add
+                (AddSpace(4) +
+                'class property TagObject: TObject read FTagObject write SetTagObject;');
+              DestinationUnit.add
+                (AddSpace(4) +
+                'class property TagString: string read FTagString write SetTagString;');
+              DestinationUnit.add
+                (AddSpace(4) +
+                'class function SVG(const Index: Integer): string; overload;');
+              DestinationUnit.add
+                (AddSpace(4) + 'class function SVG(const Index: T' + ArrayName +
+                'Index) : string; overload;');
+              DestinationUnit.add(AddSpace(4) + 'class constructor Create;');
+              DestinationUnit.add(AddSpace(2) + 'end;');
+              DestinationUnit.add('');
               DestinationUnit.add('var');
               DestinationUnit.add(AddSpace(2) + ArrayName +
-                ' : array of string;');
+                ' : array of String;');
               DestinationUnit.add('');
               DestinationUnit.add('implementation');
+              DestinationUnit.add('');
+              DestinationUnit.add('uses');
+              DestinationUnit.add(AddSpace(2) + 'System.SysUtils;');
+              DestinationUnit.add('');
+              DestinationUnit.add('{ T' + ArrayName + ' }');
+              DestinationUnit.add('');
+              DestinationUnit.add('class constructor T' + ArrayName +
+                '.Create;');
+              DestinationUnit.add('begin');
+              DestinationUnit.add(AddSpace(2) + 'inherited;');
+              DestinationUnit.add(AddSpace(2) + 'FTag := 0;');
+              DestinationUnit.add(AddSpace(2) + 'FTagBool := false;');
+              DestinationUnit.add(AddSpace(2) + 'FTagFloat := 0;');
+              DestinationUnit.add(AddSpace(2) + 'FTagObject := nil;');
+              DestinationUnit.add(AddSpace(2) + 'FTagString := '''';');
+              DestinationUnit.add('end;');
+              DestinationUnit.add('');
+              DestinationUnit.add('class procedure T' + ArrayName +
+                '.SetTag(const Value: integer);');
+              DestinationUnit.add('begin');
+              DestinationUnit.add(AddSpace(2) + 'FTag := Value;');
+              DestinationUnit.add('end;');
+              DestinationUnit.add('');
+              DestinationUnit.add('class procedure T' + ArrayName +
+                '.SetTagBool(const Value: Boolean);');
+              DestinationUnit.add('begin');
+              DestinationUnit.add(AddSpace(2) + 'FTagBool := Value;');
+              DestinationUnit.add('end;');
+              DestinationUnit.add('');
+              DestinationUnit.add('class procedure T' + ArrayName +
+                '.SetTagFloat(const Value: Single);');
+              DestinationUnit.add('begin');
+              DestinationUnit.add(AddSpace(2) + 'FTagFloat := Value;');
+              DestinationUnit.add('end;');
+              DestinationUnit.add('');
+              DestinationUnit.add('class procedure T' + ArrayName +
+                '.SetTagObject(const Value: TObject);');
+              DestinationUnit.add('begin');
+              DestinationUnit.add(AddSpace(2) + 'FTagObject := Value;');
+              DestinationUnit.add('end;');
+              DestinationUnit.add('');
+              DestinationUnit.add('class procedure T' + ArrayName +
+                '.SetTagString(const Value: string);');
+              DestinationUnit.add('begin');
+              DestinationUnit.add(AddSpace(2) + 'FTagString := Value;');
+              DestinationUnit.add('end;');
+              DestinationUnit.add('');
+              DestinationUnit.add('class function T' + ArrayName +
+                '.SVG(const Index: Integer): string;');
+              DestinationUnit.add('begin');
+              DestinationUnit.add(AddSpace(2) + 'if (index < length(' +
+                ArrayName + ')) then');
+              DestinationUnit.add(AddSpace(2) + '  result := ' + ArrayName +
+                '[index]');
+              DestinationUnit.add(AddSpace(2) + 'else');
+              DestinationUnit.add
+                (AddSpace(2) +
+                '  raise Exception.Create(''SVG not found. Index out of range.'');');
+              DestinationUnit.add('end;');
+              DestinationUnit.add('');
+              DestinationUnit.add('class function T' + ArrayName +
+                '.SVG(const Index : T' + ArrayName + 'Index): string;');
+              DestinationUnit.add('begin');
+              DestinationUnit.add(AddSpace(2) + 'result := SVG(ord(index));');
+              DestinationUnit.add('end;');
               DestinationUnit.add('');
               DestinationUnit.add('initialization');
               DestinationUnit.add('');
