@@ -186,7 +186,7 @@ begin
               DestinationUnit.add('');
               DestinationUnit.add('var');
               DestinationUnit.add(AddSpace(2) + ArrayName +
-                ' : array of String;');
+                ' : array of string;');
               DestinationUnit.add('');
               DestinationUnit.add('implementation');
               DestinationUnit.add('');
