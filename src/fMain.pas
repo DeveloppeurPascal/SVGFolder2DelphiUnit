@@ -22,13 +22,12 @@ type
     SaveDialog1: TSaveDialog;
     procedure Button1Click(Sender: TObject);
   private
-    { Déclarations privées }
   public
-    { Déclarations publiques }
-    function OnlyChar(s: string): string;
+    function OnlyChar(const S: string): string;
     function getConstantName(Const FileName: string): string;
     procedure AjouteSVGSource(Const FileName: string;
       var Destination: TStringList);
+    function AddSpace(const Nb: cardinal): string;
   end;
 
 var
@@ -40,6 +39,15 @@ implementation
 
 uses
   System.IOUtils;
+
+function TForm1.AddSpace(const Nb: cardinal): string;
+var
+  i: cardinal;
+begin
+  result := '';
+  for i := 1 to Nb do
+    result := result + ' ';
+end;
 
 procedure TForm1.AjouteSVGSource(const FileName: string;
   var Destination: TStringList);
@@ -153,26 +161,38 @@ begin
                 ('// ****************************************');
               DestinationUnit.add('');
               DestinationUnit.add('interface');
+              DestinationUnit.add('');
               DestinationUnit.add('const');
               for i := 0 to SVGFilesList.Count - 1 do
-                DestinationUnit.add(getConstantName(SVGFilesList[i]) + '=' +
+                DestinationUnit.add
+                  (AddSpace(2) + getConstantName(SVGFilesList[i]) + ' = ' +
                   i.tostring + ';');
               ArrayName := 'SVG' + SourceFolderName;
+              DestinationUnit.add('');
+              DestinationUnit.add('type');
               DestinationUnit.add('{$SCOPEDENUMS ON}');
-              DestinationUnit.add('type T' + ArrayName + 'Index = (');
+              DestinationUnit.add(AddSpace(2) + 'T' + ArrayName + 'Index = (');
               for i := 0 to SVGFilesList.Count - 1 do
                 if (i < SVGFilesList.Count - 1) then
                   DestinationUnit.add
-                    (OnlyChar(tpath.GetFileNameWithoutExtension(SVGFilesList[i])
-                    ) + '=' + getConstantName(SVGFilesList[i]) + ',')
+                    (AddSpace(4) + OnlyChar(tpath.GetFileNameWithoutExtension
+                    (SVGFilesList[i])) + ' = ' +
+                    getConstantName(SVGFilesList[i]) + ',')
                 else
                   DestinationUnit.add
-                    (OnlyChar(tpath.GetFileNameWithoutExtension(SVGFilesList[i])
-                    ) + '=' + getConstantName(SVGFilesList[i]) + ');');
-              DestinationUnit.add('var ' + ArrayName + ' : array of string;');
+                    (AddSpace(4) + OnlyChar(tpath.GetFileNameWithoutExtension
+                    (SVGFilesList[i])) + ' = ' +
+                    getConstantName(SVGFilesList[i]) + ');');
+              DestinationUnit.add('');
+              DestinationUnit.add('var');
+              DestinationUnit.add(AddSpace(2) + ArrayName +
+                ' : array of String;');
+              DestinationUnit.add('');
               DestinationUnit.add('implementation');
+              DestinationUnit.add('');
               DestinationUnit.add('initialization');
-              DestinationUnit.add('setlength(' + ArrayName + ',' +
+              DestinationUnit.add('');
+              DestinationUnit.add('SetLength(' + ArrayName + ', ' +
                 SVGFilesList.Count.tostring + ');');
               for i := 0 to SVGFilesList.Count - 1 do
               begin
@@ -181,6 +201,7 @@ begin
                 AjouteSVGSource(SVGFilesList[i], DestinationUnit);
                 DestinationUnit.add(''''''';');
               end;
+              DestinationUnit.add('');
               DestinationUnit.add('end.');
               DestinationUnit.SaveToFile(UnitFilePath);
             finally
@@ -209,7 +230,7 @@ begin
   result := 'CSVG' + OnlyChar(tpath.GetFileNameWithoutExtension(FileName));
 end;
 
-function TForm1.OnlyChar(s: string): string;
+function TForm1.OnlyChar(const S: string): string;
 var
   c: char;
   i: integer;
@@ -217,9 +238,9 @@ var
 begin
   result := '';
   Upper := true;
-  for i := 0 to length(s) - 1 do
+  for i := 0 to length(S) - 1 do
   begin
-    c := s.Chars[i];
+    c := S.Chars[i];
     if CharInSet(c, ['-', '_', '.']) then
       Upper := true
     else if CharInSet(c, ['0' .. '9', 'a' .. 'z', 'A' .. 'Z']) then
