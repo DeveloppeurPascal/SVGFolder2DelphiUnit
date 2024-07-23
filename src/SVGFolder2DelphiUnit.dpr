@@ -1,4 +1,4 @@
-program SVGFromFolderToStringArrayInUnit;
+program SVGFolder2DelphiUnit;
 
 uses
   System.StartUpCopy,
