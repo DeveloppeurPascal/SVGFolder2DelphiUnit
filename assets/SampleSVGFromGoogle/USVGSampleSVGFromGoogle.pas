@@ -12,7 +12,7 @@ unit USVGSampleSVGFromGoogle;
 // ****************************************
 // File generator : SVG Folder to Delphi Unit (1.0)
 // Website : https://svgfolder2delphiunit.olfsoftware.fr/
-// Generation date : 23/07/2024 13:56:03
+// Generation date : 28/07/2024 14:24:54
 //
 // Don't do any change on this file.
 // They will be erased by next generation !
@@ -68,6 +68,7 @@ type
     class property TagString: string read FTagString write SetTagString;
     class function SVG(const Index: Integer): string; overload;
     class function SVG(const Index: TSVGSampleSVGFromGoogleIndex) : string; overload;
+    class function Count : Integer;
     class constructor Create;
   end;
 
@@ -118,7 +119,7 @@ end;
 
 class function TSVGSampleSVGFromGoogle.SVG(const Index: Integer): string;
 begin
-  if (index < length(SVGSampleSVGFromGoogle)) then
+  if (index < Count) then
     result := SVGSampleSVGFromGoogle[index]
   else
     raise Exception.Create('SVG not found. Index out of range.');
@@ -127,6 +128,11 @@ end;
 class function TSVGSampleSVGFromGoogle.SVG(const Index : TSVGSampleSVGFromGoogleIndex): string;
 begin
   result := SVG(ord(index));
+end;
+
+class function TSVGSampleSVGFromGoogle.Count: Integer;
+begin
+  result := length(SVGSampleSVGFromGoogle);
 end;
 
 initialization
