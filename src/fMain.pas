@@ -234,6 +234,8 @@ begin
               DestinationUnit.add
                 (AddSpace(4) + 'class function SVG(const Index: T' + ArrayName +
                 'Index) : string; overload;');
+              DestinationUnit.add
+                (AddSpace(4) + 'class function Count : Integer;');
               DestinationUnit.add(AddSpace(4) + 'class constructor Create;');
               DestinationUnit.add(AddSpace(2) + 'end;');
               DestinationUnit.add('');
@@ -292,8 +294,7 @@ begin
               DestinationUnit.add('class function T' + ArrayName +
                 '.SVG(const Index: Integer): string;');
               DestinationUnit.add('begin');
-              DestinationUnit.add(AddSpace(2) + 'if (index < length(' +
-                ArrayName + ')) then');
+              DestinationUnit.add(AddSpace(2) + 'if (index < Count) then');
               DestinationUnit.add(AddSpace(2) + '  result := ' + ArrayName +
                 '[index]');
               DestinationUnit.add(AddSpace(2) + 'else');
@@ -306,6 +307,13 @@ begin
                 '.SVG(const Index : T' + ArrayName + 'Index): string;');
               DestinationUnit.add('begin');
               DestinationUnit.add(AddSpace(2) + 'result := SVG(ord(index));');
+              DestinationUnit.add('end;');
+              DestinationUnit.add('');
+              DestinationUnit.add('class function T' + ArrayName +
+                '.Count: Integer;');
+              DestinationUnit.add('begin');
+              DestinationUnit.add(AddSpace(2) + 'result := length(' +
+                ArrayName + ');');
               DestinationUnit.add('end;');
               DestinationUnit.add('');
               DestinationUnit.add('initialization');
