@@ -10,9 +10,15 @@ An SVG list is created as an array of strings[^1] containing the textual source 
 
 Constants and an enumeration containing the unit name and the SVG file names provide the indices of the associated source code in the list. This makes it easier to find your way around and manage several SVG lists in a single project.
 
+[^1]: The generated code is compatible with Delphi 12 Athens and later. The strings used are multiline strings and not classic Pascal strings to simplify generation (nothing prevents you from forking this project and modifying this part for yourself if you need to).
+
 This code repository contains a project developed in Object Pascal language under Delphi. You don't know what Delphi is and where to download it ? You'll learn more [on this web site](https://delphi-resources.developpeur-pascal.fr/).
 
-[^1]: The generated code is compatible with Delphi 12 Athens and later. The strings used are multiline strings and not classic Pascal strings to simplify generation (nothing prevents you from forking this project and modifying this part for yourself if you need to).
+## Talks and conferences
+
+### Twitch
+
+Follow my development streams of software, video games, mobile applications and websites on [my Twitch channel](https://www.twitch.tv/patrickpremartin) or as replays on [Serial Streameur](https://serialstreameur.fr) mostly in French.
 
 ## Using this software
 
@@ -20,11 +26,11 @@ This software is available in a directly installable or executable production ve
 
 You can download and redistribute it free of charge, provided you do not modify its content (installer, program, additional files, etc.).
 
-[Download program or installer]() (WIP)
+[Download program or installer](DDD) (WIP)
 
 If you use this software regularly and are satisfied with it, you are invited to purchase an end-user license. Purchasing a license will give you access to software updates, as well as enabling optional features.
 
-[Buy a license]() (WIP)
+[Buy a license](FFF) (WIP)
 
 You can also [visit the software website](https://svgfolder2delphiunit.olfsoftware.fr/) to find out more about how it works, access videos and articles, find out about the different versions available and their features, contact user support...
 
@@ -36,6 +42,16 @@ This project uses dependencies in the form of sub-modules. They will be absent f
 
 * [DeveloppeurPascal/AboutDialog-Delphi-Component](https://github.com/DeveloppeurPascal/AboutDialog-Delphi-Component) must be installed in the ./lib-externes/AboutDialog-Delphi-Component subfolder.
 * [DeveloppeurPascal/librairies](https://github.com/DeveloppeurPascal/librairies) must be installed in the ./lib-externes/librairies subfolder.
+
+## Compatibility
+
+As an [Embarcadero MVP](https://www.embarcadero.com/resources/partners/mvp-directory), I benefit from the latest versions of [Delphi](https://www.embarcadero.com/products/delphi) and [C++ Builder](https://www.embarcadero.com/products/cbuilder) in [RAD Studio](https://www.embarcadero.com/products/rad-studio) as soon as they are released. I therefore work with these versions.
+
+Normally, my libraries and components should also run on at least the current version of [Delphi Community Edition](https://www.embarcadero.com/products/delphi/starter).
+
+There's no guarantee of compatibility with earlier versions, even though I try to keep my code clean and avoid using too many of the new ways of writing in it (type inference, inline var and multiline strings).
+
+If you detect any anomalies on earlier versions, please don't hesitate to [report them](https://github.com/DeveloppeurPascal/SVGFolder2DelphiUnit/issues) so that I can test and try to correct or provide a workaround.
 
 ## License to use this code repository and its contents
 

@@ -1,6 +1,6 @@
 # SVG Folder to Delphi Unit
 
-[This page in english.](README.md)
+[This page in English.](README.md)
 
 Ce programme est destiné à des développeurs Delphi désireux d'intégrer des images vectorielles (sous forme de SVG) dans leurs projets.
 
@@ -10,9 +10,15 @@ Un liste des SVG est créé sous forme de tableau de chaînes de caractères[^1]
 
 Des constantes et une énumération reprenant le nom de l'unité et les noms des fichiers SVG fournissent les indices du code source associé dans la liste. C'est plus simple pour s'y retrouver et en gérer plusieurs dans un même projet.
 
+[^1]: Le code généré est compatible avec Delphi 12 Athens et les versions suivantes. Les chaînes de caractères utilisées sont des chaînes multiligne et non des chaînes Pascal classiques pour simplifier la génération (rien ne vous empêche de faire un fork de ce projet et modifier cette partie pour vous si besoin).
+
 Ce dépôt de code contient un projet développé en langage Pascal Objet sous Delphi. Vous ne savez pas ce qu'est Dephi ni où le télécharger ? Vous en saurez plus [sur ce site web](https://delphi-resources.developpeur-pascal.fr/).
 
-[^1]: Le code généré est compatible avec Delphi 12 Athens et les versions suivantes. Les chaînes de caractères utilisées sont des chaînes multiligne et non des chaînes Pascal classiques pour simplifier la génération (rien ne vous empêche de faire un fork de ce projet et modifier cette partie pour vous si besoin).
+## Présentations et conférences
+
+### Twitch
+
+Suivez mes streams de développement de logiciels, jeux vidéo, applications mobiles et sites web sur [ma chaîne Twitch](https://www.twitch.tv/patrickpremartin) ou en rediffusion sur [Serial Streameur](https://serialstreameur.fr) la plupart du temps en français.
 
 ## Utiliser ce logiciel
 
@@ -20,13 +26,13 @@ Ce logiciel est disponible dans une version de production directement installabl
 
 Vous pouvez le télécharger et le rediffuser gratuitement à condition de ne pas en modifier le contenu (installeur, programme, fichiers annexes, ...).
 
-[Télécharger le programme ou son installeur]() (WIP)
+[Télécharger le programme ou son installeur](DDD) (WIP)
 
 Si vous utilisez régulièrement ce logiciel et en êtes satisfait vous êtes invité à en acheter une licence d'utilisateur final. L'achat d'une licence vous donnera accès aux mises à jour du logiciel en plus d'activer d'évenuelles fonctionnalités optionnelles.
 
-[Acheter une licence]() (WIP)
+[Acheter une licence](FFF) (WIP)
 
-Vous pouvez aussi [consulter le site du logiciel](EEE) pour en savoir plus sur son fonctionnement, accéder à des vidéos et articles, connaître les différentes versions disponibles et leurs fonctionnalités, contacter le support utilisateurs...
+Vous pouvez aussi [consulter le site du logiciel](https://svgfolder2delphiunit.olfsoftware.fr/) pour en savoir plus sur son fonctionnement, accéder à des vidéos et articles, connaître les différentes versions disponibles et leurs fonctionnalités, contacter le support utilisateurs...
 
 ## Installation des codes sources
 
@@ -36,6 +42,16 @@ Ce projet utilise des dépendances sous forme de sous modules. Ils seront absent
 
 * [DeveloppeurPascal/AboutDialog-Delphi-Component](https://github.com/DeveloppeurPascal/AboutDialog-Delphi-Component) doit être installé dans le sous dossier ./lib-externes/AboutDialog-Delphi-Component
 * [DeveloppeurPascal/librairies](https://github.com/DeveloppeurPascal/librairies) doit être installé dans le sous dossier ./lib-externes/librairies
+
+## Compatibilité
+
+En tant que [MVP Embarcadero](https://www.embarcadero.com/resources/partners/mvp-directory) je bénéficie dès qu'elles sortent des dernières versions de [Delphi](https://www.embarcadero.com/products/delphi) et [C++ Builder](https://www.embarcadero.com/products/cbuilder) dans [RAD Studio](https://www.embarcadero.com/products/rad-studio). C'est donc dans ces versions que je travaille.
+
+Normalement mes librairies et composants doivent aussi fonctionner au moins sur la version en cours de [Delphi Community Edition](https://www.embarcadero.com/products/delphi/starter).
+
+Aucune garantie de compatibilité avec des versions antérieures n'est fournie même si je m'efforce de faire du code propre et ne pas trop utiliser les nouvelles façons d'écrire dedans (type inference, inline var et multilines strings).
+
+Si vous détectez des anomalies sur des versions antérieures n'hésitez pas à [les rapporter](https://github.com/DeveloppeurPascal/SVGFolder2DelphiUnit/issues) pour que je teste et tente de corriger ou fournir un contournement.
 
 ## Licence d'utilisation de ce dépôt de code et de son contenu
 
