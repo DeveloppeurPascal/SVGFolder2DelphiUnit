@@ -55,12 +55,19 @@ program SVGFolder2DelphiUnit;
 uses
   System.StartUpCopy,
   FMX.Forms,
-  fMain in 'fMain.pas' {Form1};
+  fMain in 'fMain.pas' {frmMain},
+  Olf.FMX.AboutDialog in '..\lib-externes\AboutDialog-Delphi-Component\src\Olf.FMX.AboutDialog.pas',
+  Olf.FMX.AboutDialogForm in '..\lib-externes\AboutDialog-Delphi-Component\src\Olf.FMX.AboutDialogForm.pas' {OlfAboutDialogForm},
+  u_urlOpen in '..\lib-externes\librairies\src\u_urlOpen.pas',
+  uAboutBox in 'uAboutBox.pas' {AboutBox: TDataModule},
+  uAboutDescriptionText in 'uAboutDescriptionText.pas',
+  uAboutLicenseText in 'uAboutLicenseText.pas',
+  uConsts in 'uConsts.pas';
 
 {$R *.res}
 
 begin
   Application.Initialize;
-  Application.CreateForm(TForm1, Form1);
+  Application.CreateForm(TfrmMain, frmMain);
   Application.Run;
 end.
