@@ -45,8 +45,8 @@
 /// https://github.com/DeveloppeurPascal/SVGFolder2DelphiUnit
 ///
 /// ***************************************************************************
-/// File last update : 2024-07-28T14:24:54.634+02:00
-/// Signature : 1cad3153e952b31c15278a60126734c3c599af15
+/// File last update : 2024-08-06T19:26:06.564+02:00
+/// Signature : 64861f154ded8bf1317cf19af831a8fd03cdd6f2
 /// ***************************************************************************
 /// </summary>
 
@@ -62,9 +62,9 @@ unit USVGSampleSVGFromGoogle;
 // from the generated array of strings.
 //
 // ****************************************
-// File generator : SVG Folder to Delphi Unit (1.0)
+// File generator : SVG Folder to Delphi Unit v1.0
 // Website : https://svgfolder2delphiunit.olfsoftware.fr/
-// Generation date : 28/07/2024 14:24:54
+// Generation date : 2024-08-06T19:26:06.559Z
 //
 // Don't do any change on this file.
 // They will be erased by next generation !

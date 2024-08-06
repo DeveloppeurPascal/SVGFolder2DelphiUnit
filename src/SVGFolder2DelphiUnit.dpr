@@ -45,8 +45,8 @@
 /// https://github.com/DeveloppeurPascal/SVGFolder2DelphiUnit
 ///
 /// ***************************************************************************
-/// File last update : 2024-07-23T12:17:14.000+02:00
-/// Signature : 2040a253a1e68e09a5549cc596cedaae4fae6362
+/// File last update : 2024-08-06T18:35:46.000+02:00
+/// Signature : 247601bcf70a5c8dbaa6f2dae3dd7e6011d6311c
 /// ***************************************************************************
 /// </summary>
 
