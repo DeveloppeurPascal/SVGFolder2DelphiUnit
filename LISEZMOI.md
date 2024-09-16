@@ -30,7 +30,7 @@ Vous pouvez le télécharger et le rediffuser gratuitement à condition de ne pa
 
 Si vous utilisez régulièrement ce logiciel et en êtes satisfait vous êtes invité à en acheter une licence d'utilisateur final. L'achat d'une licence vous donnera accès aux mises à jour du logiciel en plus d'activer d'évenuelles fonctionnalités optionnelles.
 
-[Acheter une licence](https://olfsoftware.lemonsqueezy.com/buy/ac9acfa0-5c33-4262-9496-ac755c356e85)
+[Acheter une licence](https://store.olfsoftware.fr/logiciels-pour-developpeurs-c-3/developpement-delphi-c-4/svg-folder-to-delphi-unit-p-24)
 
 Vous pouvez aussi [consulter le site du logiciel](https://svgfolder2delphiunit.olfsoftware.fr/) pour en savoir plus sur son fonctionnement, accéder à des vidéos et articles, connaître les différentes versions disponibles et leurs fonctionnalités, contacter le support utilisateurs...
 
