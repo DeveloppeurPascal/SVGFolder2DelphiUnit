@@ -1,0 +1,847 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<HTML>
+<HEAD>
+<meta name="GENERATOR" content="Microsoft&reg; HTML Help Workshop 4.1">
+<!-- Sitemap 1.0 -->
+</HEAD>
+<BODY>
+    <OBJECT type="text/site properties">
+      <param name="Window Styles" value="0x800227">
+    </OBJECT>
+    <UL>      <LI> <OBJECT type="text/sitemap">
+          <param name="Name" value="SVGFolder2DelphiUnit">
+          <param name="Local" value="SVGFolder2DelphiUnit.html">
+          </OBJECT>
+          <UL>
+              <LI> <OBJECT type="text/sitemap">
+                  <param name="Name" value="Olf.FMX.AboutDialog">
+                  <param name="Local" value="Olf.FMX.AboutDialog.html">
+                  </OBJECT>
+                  <UL>
+                      <LI> <OBJECT type="text/sitemap">
+                          <param name="Name" value="Classes">
+                          </OBJECT>
+                          <UL>
+                              <LI> <OBJECT type="text/sitemap">
+                                  <param name="Name" value="TOlfAboutDialog">
+                                  <param name="Local" value="Olf.FMX.AboutDialog.TOlfAboutDialog.html">
+                                  </OBJECT>
+                                  <UL>
+                                      <LI> <OBJECT type="text/sitemap">
+                                          <param name="Name" value="Constructors">
+                                          </OBJECT>
+                                          <UL>
+                                              <LI> <OBJECT type="text/sitemap">
+                                                  <param name="Name" value="Create">
+                                                  <param name="Local" value="Olf.FMX.AboutDialog.TOlfAboutDialog.Create.html">
+                                                  </OBJECT>
+                                              <LI> <OBJECT type="text/sitemap">
+                                                  <param name="Name" value="Destroy">
+                                                  <param name="Local" value="Olf.FMX.AboutDialog.TOlfAboutDialog.Destroy.html">
+                                                  </OBJECT>
+                                          </UL>
+                                      <LI> <OBJECT type="text/sitemap">
+                                          <param name="Name" value="Properties">
+                                          </OBJECT>
+                                          <UL>
+                                              <LI> <OBJECT type="text/sitemap">
+                                                  <param name="Name" value="Copyright">
+                                                  <param name="Local" value="Olf.FMX.AboutDialog.TOlfAboutDialog.Copyright.html">
+                                                  </OBJECT>
+                                              <LI> <OBJECT type="text/sitemap">
+                                                  <param name="Name" value="Description">
+                                                  <param name="Local" value="Olf.FMX.AboutDialog.TOlfAboutDialog.Description.html">
+                                                  </OBJECT>
+                                              <LI> <OBJECT type="text/sitemap">
+                                                  <param name="Name" value="Image">
+                                                  <param name="Local" value="Olf.FMX.AboutDialog.TOlfAboutDialog.Image.html">
+                                                  </OBJECT>
+                                              <LI> <OBJECT type="text/sitemap">
+                                                  <param name="Name" value="ImageIndex">
+                                                  <param name="Local" value="Olf.FMX.AboutDialog.TOlfAboutDialog.ImageIndex.html">
+                                                  </OBJECT>
+                                              <LI> <OBJECT type="text/sitemap">
+                                                  <param name="Name" value="Images">
+                                                  <param name="Local" value="Olf.FMX.AboutDialog.TOlfAboutDialog.Images.html">
+                                                  </OBJECT>
+                                              <LI> <OBJECT type="text/sitemap">
+                                                  <param name="Name" value="Langue">
+                                                  <param name="Local" value="Olf.FMX.AboutDialog.TOlfAboutDialog.Langue.html">
+                                                  </OBJECT>
+                                              <LI> <OBJECT type="text/sitemap">
+                                                  <param name="Name" value="Licence">
+                                                  <param name="Local" value="Olf.FMX.AboutDialog.TOlfAboutDialog.Licence.html">
+                                                  </OBJECT>
+                                              <LI> <OBJECT type="text/sitemap">
+                                                  <param name="Name" value="MainFormCaptionPrefix">
+                                                  <param name="Local" value="Olf.FMX.AboutDialog.TOlfAboutDialog.MainFormCaptionPrefix.html">
+                                                  </OBJECT>
+                                              <LI> <OBJECT type="text/sitemap">
+                                                  <param name="Name" value="MainFormCaptionSuffix">
+                                                  <param name="Local" value="Olf.FMX.AboutDialog.TOlfAboutDialog.MainFormCaptionSuffix.html">
+                                                  </OBJECT>
+                                              <LI> <OBJECT type="text/sitemap">
+                                                  <param name="Name" value="MultiResBitmap">
+                                                  <param name="Local" value="Olf.FMX.AboutDialog.TOlfAboutDialog.MultiResBitmap.html">
+                                                  </OBJECT>
+                                              <LI> <OBJECT type="text/sitemap">
+                                                  <param name="Name" value="ReplaceMainFormCaption">
+                                                  <param name="Local" value="Olf.FMX.AboutDialog.TOlfAboutDialog.ReplaceMainFormCaption.html">
+                                                  </OBJECT>
+                                              <LI> <OBJECT type="text/sitemap">
+                                                  <param name="Name" value="Titre">
+                                                  <param name="Local" value="Olf.FMX.AboutDialog.TOlfAboutDialog.Titre.html">
+                                                  </OBJECT>
+                                              <LI> <OBJECT type="text/sitemap">
+                                                  <param name="Name" value="URL">
+                                                  <param name="Local" value="Olf.FMX.AboutDialog.TOlfAboutDialog.URL.html">
+                                                  </OBJECT>
+                                              <LI> <OBJECT type="text/sitemap">
+                                                  <param name="Name" value="VersionDate">
+                                                  <param name="Local" value="Olf.FMX.AboutDialog.TOlfAboutDialog.VersionDate.html">
+                                                  </OBJECT>
+                                              <LI> <OBJECT type="text/sitemap">
+                                                  <param name="Name" value="VersionNumero">
+                                                  <param name="Local" value="Olf.FMX.AboutDialog.TOlfAboutDialog.VersionNumero.html">
+                                                  </OBJECT>
+                                              <LI> <OBJECT type="text/sitemap">
+                                                  <param name="Name" value="onAfterExecute">
+                                                  <param name="Local" value="Olf.FMX.AboutDialog.TOlfAboutDialog.onAfterExecute.html">
+                                                  </OBJECT>
+                                              <LI> <OBJECT type="text/sitemap">
+                                                  <param name="Name" value="onBeforeExecute">
+                                                  <param name="Local" value="Olf.FMX.AboutDialog.TOlfAboutDialog.onBeforeExecute.html">
+                                                  </OBJECT>
+                                              <LI> <OBJECT type="text/sitemap">
+                                                  <param name="Name" value="onButtonBuyClick">
+                                                  <param name="Local" value="Olf.FMX.AboutDialog.TOlfAboutDialog.onButtonBuyClick.html">
+                                                  </OBJECT>
+                                              <LI> <OBJECT type="text/sitemap">
+                                                  <param name="Name" value="onButtonBuyClickProc">
+                                                  <param name="Local" value="Olf.FMX.AboutDialog.TOlfAboutDialog.onButtonBuyClickProc.html">
+                                                  </OBJECT>
+                                              <LI> <OBJECT type="text/sitemap">
+                                                  <param name="Name" value="onButtonLicenseClick">
+                                                  <param name="Local" value="Olf.FMX.AboutDialog.TOlfAboutDialog.onButtonLicenseClick.html">
+                                                  </OBJECT>
+                                              <LI> <OBJECT type="text/sitemap">
+                                                  <param name="Name" value="onButtonLicenseClickProc">
+                                                  <param name="Local" value="Olf.FMX.AboutDialog.TOlfAboutDialog.onButtonLicenseClickProc.html">
+                                                  </OBJECT>
+                                              <LI> <OBJECT type="text/sitemap">
+                                                  <param name="Name" value="onButtonRegisterClick">
+                                                  <param name="Local" value="Olf.FMX.AboutDialog.TOlfAboutDialog.onButtonRegisterClick.html">
+                                                  </OBJECT>
+                                              <LI> <OBJECT type="text/sitemap">
+                                                  <param name="Name" value="onButtonRegisterClickProc">
+                                                  <param name="Local" value="Olf.FMX.AboutDialog.TOlfAboutDialog.onButtonRegisterClickProc.html">
+                                                  </OBJECT>
+                                              <LI> <OBJECT type="text/sitemap">
+                                                  <param name="Name" value="onCloseDialog">
+                                                  <param name="Local" value="Olf.FMX.AboutDialog.TOlfAboutDialog.onCloseDialog.html">
+                                                  </OBJECT>
+                                              <LI> <OBJECT type="text/sitemap">
+                                                  <param name="Name" value="onFormActivate">
+                                                  <param name="Local" value="Olf.FMX.AboutDialog.TOlfAboutDialog.onFormActivate.html">
+                                                  </OBJECT>
+                                              <LI> <OBJECT type="text/sitemap">
+                                                  <param name="Name" value="onFormClose">
+                                                  <param name="Local" value="Olf.FMX.AboutDialog.TOlfAboutDialog.onFormClose.html">
+                                                  </OBJECT>
+                                              <LI> <OBJECT type="text/sitemap">
+                                                  <param name="Name" value="onFormCreate">
+                                                  <param name="Local" value="Olf.FMX.AboutDialog.TOlfAboutDialog.onFormCreate.html">
+                                                  </OBJECT>
+                                              <LI> <OBJECT type="text/sitemap">
+                                                  <param name="Name" value="onFormShow">
+                                                  <param name="Local" value="Olf.FMX.AboutDialog.TOlfAboutDialog.onFormShow.html">
+                                                  </OBJECT>
+                                              <LI> <OBJECT type="text/sitemap">
+                                                  <param name="Name" value="onGetFooterText">
+                                                  <param name="Local" value="Olf.FMX.AboutDialog.TOlfAboutDialog.onGetFooterText.html">
+                                                  </OBJECT>
+                                              <LI> <OBJECT type="text/sitemap">
+                                                  <param name="Name" value="onGetFooterTextProc">
+                                                  <param name="Local" value="Olf.FMX.AboutDialog.TOlfAboutDialog.onGetFooterTextProc.html">
+                                                  </OBJECT>
+                                              <LI> <OBJECT type="text/sitemap">
+                                                  <param name="Name" value="onGetText">
+                                                  <param name="Local" value="Olf.FMX.AboutDialog.TOlfAboutDialog.onGetText.html">
+                                                  </OBJECT>
+                                              <LI> <OBJECT type="text/sitemap">
+                                                  <param name="Name" value="onGetTextProc">
+                                                  <param name="Local" value="Olf.FMX.AboutDialog.TOlfAboutDialog.onGetTextProc.html">
+                                                  </OBJECT>
+                                              <LI> <OBJECT type="text/sitemap">
+                                                  <param name="Name" value="onURLClick">
+                                                  <param name="Local" value="Olf.FMX.AboutDialog.TOlfAboutDialog.onURLClick.html">
+                                                  </OBJECT>
+                                          </UL>
+                                      <LI> <OBJECT type="text/sitemap">
+                                          <param name="Name" value="Methods">
+                                          </OBJECT>
+                                          <UL>
+                                              <LI> <OBJECT type="text/sitemap">
+                                                  <param name="Name" value="DoReplaceMainFormCaption">
+                                                  <param name="Local" value="Olf.FMX.AboutDialog.TOlfAboutDialog.DoReplaceMainFormCaption.html">
+                                                  </OBJECT>
+                                              <LI> <OBJECT type="text/sitemap">
+                                                  <param name="Name" value="Execute">
+                                                  <param name="Local" value="Olf.FMX.AboutDialog.TOlfAboutDialog.Execute.html">
+                                                  </OBJECT>
+                                              <LI> <OBJECT type="text/sitemap">
+                                                  <param name="Name" value="GetMainFormCaption">
+                                                  <param name="Local" value="Olf.FMX.AboutDialog.TOlfAboutDialog.GetMainFormCaption.html">
+                                                  </OBJECT>
+                                              <LI> <OBJECT type="text/sitemap">
+                                                  <param name="Name" value="GetVersionDate">
+                                                  <param name="Local" value="Olf.FMX.AboutDialog.TOlfAboutDialog.GetVersionDate.html">
+                                                  </OBJECT>
+                                              <LI> <OBJECT type="text/sitemap">
+                                                  <param name="Name" value="Notification">
+                                                  <param name="Local" value="Olf.FMX.AboutDialog.TOlfAboutDialog.Notification.html">
+                                                  </OBJECT>
+                                          </UL>
+                                  </UL>
+                          </UL>
+                      <LI> <OBJECT type="text/sitemap">
+                          <param name="Name" value="Routines">
+                          </OBJECT>
+                          <UL>
+                              <LI> <OBJECT type="text/sitemap">
+                                  <param name="Name" value="Register">
+                                  <param name="Local" value="Olf.FMX.AboutDialog.Register.html">
+                                  </OBJECT>
+                          </UL>
+                  </UL>
+              <LI> <OBJECT type="text/sitemap">
+                  <param name="Name" value="Olf.FMX.AboutDialogForm">
+                  <param name="Local" value="Olf.FMX.AboutDialogForm.html">
+                  </OBJECT>
+                  <UL>
+                      <LI> <OBJECT type="text/sitemap">
+                          <param name="Name" value="Classes">
+                          </OBJECT>
+                          <UL>
+                              <LI> <OBJECT type="text/sitemap">
+                                  <param name="Name" value="TOlfAboutDialogForm">
+                                  <param name="Local" value="Olf.FMX.AboutDialogForm.TOlfAboutDialogForm.html">
+                                  </OBJECT>
+                                  <UL>
+                                      <LI> <OBJECT type="text/sitemap">
+                                          <param name="Name" value="Properties">
+                                          </OBJECT>
+                                          <UL>
+                                              <LI> <OBJECT type="text/sitemap">
+                                                  <param name="Name" value="Copyright">
+                                                  <param name="Local" value="Olf.FMX.AboutDialogForm.TOlfAboutDialogForm.Copyright.html">
+                                                  </OBJECT>
+                                              <LI> <OBJECT type="text/sitemap">
+                                                  <param name="Name" value="Description">
+                                                  <param name="Local" value="Olf.FMX.AboutDialogForm.TOlfAboutDialogForm.Description.html">
+                                                  </OBJECT>
+                                              <LI> <OBJECT type="text/sitemap">
+                                                  <param name="Name" value="Image">
+                                                  <param name="Local" value="Olf.FMX.AboutDialogForm.TOlfAboutDialogForm.Image.html">
+                                                  </OBJECT>
+                                              <LI> <OBJECT type="text/sitemap">
+                                                  <param name="Name" value="Langue">
+                                                  <param name="Local" value="Olf.FMX.AboutDialogForm.TOlfAboutDialogForm.Langue.html">
+                                                  </OBJECT>
+                                              <LI> <OBJECT type="text/sitemap">
+                                                  <param name="Name" value="Licence">
+                                                  <param name="Local" value="Olf.FMX.AboutDialogForm.TOlfAboutDialogForm.Licence.html">
+                                                  </OBJECT>
+                                              <LI> <OBJECT type="text/sitemap">
+                                                  <param name="Name" value="MultiResBitmap">
+                                                  <param name="Local" value="Olf.FMX.AboutDialogForm.TOlfAboutDialogForm.MultiResBitmap.html">
+                                                  </OBJECT>
+                                              <LI> <OBJECT type="text/sitemap">
+                                                  <param name="Name" value="Titre">
+                                                  <param name="Local" value="Olf.FMX.AboutDialogForm.TOlfAboutDialogForm.Titre.html">
+                                                  </OBJECT>
+                                              <LI> <OBJECT type="text/sitemap">
+                                                  <param name="Name" value="URL">
+                                                  <param name="Local" value="Olf.FMX.AboutDialogForm.TOlfAboutDialogForm.URL.html">
+                                                  </OBJECT>
+                                              <LI> <OBJECT type="text/sitemap">
+                                                  <param name="Name" value="VersionDate">
+                                                  <param name="Local" value="Olf.FMX.AboutDialogForm.TOlfAboutDialogForm.VersionDate.html">
+                                                  </OBJECT>
+                                              <LI> <OBJECT type="text/sitemap">
+                                                  <param name="Name" value="VersionNumero">
+                                                  <param name="Local" value="Olf.FMX.AboutDialogForm.TOlfAboutDialogForm.VersionNumero.html">
+                                                  </OBJECT>
+                                              <LI> <OBJECT type="text/sitemap">
+                                                  <param name="Name" value="onButtonBuyClick">
+                                                  <param name="Local" value="Olf.FMX.AboutDialogForm.TOlfAboutDialogForm.onButtonBuyClick.html">
+                                                  </OBJECT>
+                                              <LI> <OBJECT type="text/sitemap">
+                                                  <param name="Name" value="onButtonBuyClickProc">
+                                                  <param name="Local" value="Olf.FMX.AboutDialogForm.TOlfAboutDialogForm.onButtonBuyClickProc.html">
+                                                  </OBJECT>
+                                              <LI> <OBJECT type="text/sitemap">
+                                                  <param name="Name" value="onButtonLicenseClick">
+                                                  <param name="Local" value="Olf.FMX.AboutDialogForm.TOlfAboutDialogForm.onButtonLicenseClick.html">
+                                                  </OBJECT>
+                                              <LI> <OBJECT type="text/sitemap">
+                                                  <param name="Name" value="onButtonLicenseClickProc">
+                                                  <param name="Local" value="Olf.FMX.AboutDialogForm.TOlfAboutDialogForm.onButtonLicenseClickProc.html">
+                                                  </OBJECT>
+                                              <LI> <OBJECT type="text/sitemap">
+                                                  <param name="Name" value="onButtonRegisterClick">
+                                                  <param name="Local" value="Olf.FMX.AboutDialogForm.TOlfAboutDialogForm.onButtonRegisterClick.html">
+                                                  </OBJECT>
+                                              <LI> <OBJECT type="text/sitemap">
+                                                  <param name="Name" value="onButtonRegisterClickProc">
+                                                  <param name="Local" value="Olf.FMX.AboutDialogForm.TOlfAboutDialogForm.onButtonRegisterClickProc.html">
+                                                  </OBJECT>
+                                              <LI> <OBJECT type="text/sitemap">
+                                                  <param name="Name" value="onCloseDialog">
+                                                  <param name="Local" value="Olf.FMX.AboutDialogForm.TOlfAboutDialogForm.onCloseDialog.html">
+                                                  </OBJECT>
+                                              <LI> <OBJECT type="text/sitemap">
+                                                  <param name="Name" value="onFormActivate">
+                                                  <param name="Local" value="Olf.FMX.AboutDialogForm.TOlfAboutDialogForm.onFormActivate.html">
+                                                  </OBJECT>
+                                              <LI> <OBJECT type="text/sitemap">
+                                                  <param name="Name" value="onFormClose">
+                                                  <param name="Local" value="Olf.FMX.AboutDialogForm.TOlfAboutDialogForm.onFormClose.html">
+                                                  </OBJECT>
+                                              <LI> <OBJECT type="text/sitemap">
+                                                  <param name="Name" value="onFormShow">
+                                                  <param name="Local" value="Olf.FMX.AboutDialogForm.TOlfAboutDialogForm.onFormShow.html">
+                                                  </OBJECT>
+                                              <LI> <OBJECT type="text/sitemap">
+                                                  <param name="Name" value="onGetFooterText">
+                                                  <param name="Local" value="Olf.FMX.AboutDialogForm.TOlfAboutDialogForm.onGetFooterText.html">
+                                                  </OBJECT>
+                                              <LI> <OBJECT type="text/sitemap">
+                                                  <param name="Name" value="onGetFooterTextProc">
+                                                  <param name="Local" value="Olf.FMX.AboutDialogForm.TOlfAboutDialogForm.onGetFooterTextProc.html">
+                                                  </OBJECT>
+                                              <LI> <OBJECT type="text/sitemap">
+                                                  <param name="Name" value="onGetText">
+                                                  <param name="Local" value="Olf.FMX.AboutDialogForm.TOlfAboutDialogForm.onGetText.html">
+                                                  </OBJECT>
+                                              <LI> <OBJECT type="text/sitemap">
+                                                  <param name="Name" value="onGetTextProc">
+                                                  <param name="Local" value="Olf.FMX.AboutDialogForm.TOlfAboutDialogForm.onGetTextProc.html">
+                                                  </OBJECT>
+                                              <LI> <OBJECT type="text/sitemap">
+                                                  <param name="Name" value="onURLClick">
+                                                  <param name="Local" value="Olf.FMX.AboutDialogForm.TOlfAboutDialogForm.onURLClick.html">
+                                                  </OBJECT>
+                                          </UL>
+                                      <LI> <OBJECT type="text/sitemap">
+                                          <param name="Name" value="Methods">
+                                          </OBJECT>
+                                          <UL>
+                                              <LI> <OBJECT type="text/sitemap">
+                                                  <param name="Name" value="FormActivate">
+                                                  <param name="Local" value="Olf.FMX.AboutDialogForm.TOlfAboutDialogForm.FormActivate.html">
+                                                  </OBJECT>
+                                              <LI> <OBJECT type="text/sitemap">
+                                                  <param name="Name" value="FormClose">
+                                                  <param name="Local" value="Olf.FMX.AboutDialogForm.TOlfAboutDialogForm.FormClose.html">
+                                                  </OBJECT>
+                                              <LI> <OBJECT type="text/sitemap">
+                                                  <param name="Name" value="FormCreate">
+                                                  <param name="Local" value="Olf.FMX.AboutDialogForm.TOlfAboutDialogForm.FormCreate.html">
+                                                  </OBJECT>
+                                              <LI> <OBJECT type="text/sitemap">
+                                                  <param name="Name" value="FormResize">
+                                                  <param name="Local" value="Olf.FMX.AboutDialogForm.TOlfAboutDialogForm.FormResize.html">
+                                                  </OBJECT>
+                                              <LI> <OBJECT type="text/sitemap">
+                                                  <param name="Name" value="FormShow">
+                                                  <param name="Local" value="Olf.FMX.AboutDialogForm.TOlfAboutDialogForm.FormShow.html">
+                                                  </OBJECT>
+                                              <LI> <OBJECT type="text/sitemap">
+                                                  <param name="Name" value="SetImageList">
+                                                  <param name="Local" value="Olf.FMX.AboutDialogForm.TOlfAboutDialogForm.SetImageList.html">
+                                                  </OBJECT>
+                                              <LI> <OBJECT type="text/sitemap">
+                                                  <param name="Name" value="UpdateTextFields">
+                                                  <param name="Local" value="Olf.FMX.AboutDialogForm.TOlfAboutDialogForm.UpdateTextFields.html">
+                                                  </OBJECT>
+                                              <LI> <OBJECT type="text/sitemap">
+                                                  <param name="Name" value="btnBuyClick">
+                                                  <param name="Local" value="Olf.FMX.AboutDialogForm.TOlfAboutDialogForm.btnBuyClick.html">
+                                                  </OBJECT>
+                                              <LI> <OBJECT type="text/sitemap">
+                                                  <param name="Name" value="btnCloseClick">
+                                                  <param name="Local" value="Olf.FMX.AboutDialogForm.TOlfAboutDialogForm.btnCloseClick.html">
+                                                  </OBJECT>
+                                              <LI> <OBJECT type="text/sitemap">
+                                                  <param name="Name" value="btnLicenseInfoClick">
+                                                  <param name="Local" value="Olf.FMX.AboutDialogForm.TOlfAboutDialogForm.btnLicenseInfoClick.html">
+                                                  </OBJECT>
+                                              <LI> <OBJECT type="text/sitemap">
+                                                  <param name="Name" value="btnRegisterClick">
+                                                  <param name="Local" value="Olf.FMX.AboutDialogForm.TOlfAboutDialogForm.btnRegisterClick.html">
+                                                  </OBJECT>
+                                              <LI> <OBJECT type="text/sitemap">
+                                                  <param name="Name" value="lblURLClick">
+                                                  <param name="Local" value="Olf.FMX.AboutDialogForm.TOlfAboutDialogForm.lblURLClick.html">
+                                                  </OBJECT>
+                                              <LI> <OBJECT type="text/sitemap">
+                                                  <param name="Name" value="zoneTextesResize">
+                                                  <param name="Local" value="Olf.FMX.AboutDialogForm.TOlfAboutDialogForm.zoneTextesResize.html">
+                                                  </OBJECT>
+                                          </UL>
+                                      <LI> <OBJECT type="text/sitemap">
+                                          <param name="Name" value="Fields">
+                                          </OBJECT>
+                                          <UL>
+                                              <LI> <OBJECT type="text/sitemap">
+                                                  <param name="Name" value="FIsInUpdateTextFields">
+                                                  <param name="Local" value="Olf.FMX.AboutDialogForm.TOlfAboutDialogForm.FIsInUpdateTextFields.html">
+                                                  </OBJECT>
+                                              <LI> <OBJECT type="text/sitemap">
+                                                  <param name="Name" value="LogoGlyph">
+                                                  <param name="Local" value="Olf.FMX.AboutDialogForm.TOlfAboutDialogForm.LogoGlyph.html">
+                                                  </OBJECT>
+                                              <LI> <OBJECT type="text/sitemap">
+                                                  <param name="Name" value="LogoImage">
+                                                  <param name="Local" value="Olf.FMX.AboutDialogForm.TOlfAboutDialogForm.LogoImage.html">
+                                                  </OBJECT>
+                                              <LI> <OBJECT type="text/sitemap">
+                                                  <param name="Name" value="VertScrollBox1">
+                                                  <param name="Local" value="Olf.FMX.AboutDialogForm.TOlfAboutDialogForm.VertScrollBox1.html">
+                                                  </OBJECT>
+                                              <LI> <OBJECT type="text/sitemap">
+                                                  <param name="Name" value="VertScrollBox2">
+                                                  <param name="Local" value="Olf.FMX.AboutDialogForm.TOlfAboutDialogForm.VertScrollBox2.html">
+                                                  </OBJECT>
+                                              <LI> <OBJECT type="text/sitemap">
+                                                  <param name="Name" value="btnBuy">
+                                                  <param name="Local" value="Olf.FMX.AboutDialogForm.TOlfAboutDialogForm.btnBuy.html">
+                                                  </OBJECT>
+                                              <LI> <OBJECT type="text/sitemap">
+                                                  <param name="Name" value="btnClose">
+                                                  <param name="Local" value="Olf.FMX.AboutDialogForm.TOlfAboutDialogForm.btnClose.html">
+                                                  </OBJECT>
+                                              <LI> <OBJECT type="text/sitemap">
+                                                  <param name="Name" value="btnLicenseInfo">
+                                                  <param name="Local" value="Olf.FMX.AboutDialogForm.TOlfAboutDialogForm.btnLicenseInfo.html">
+                                                  </OBJECT>
+                                              <LI> <OBJECT type="text/sitemap">
+                                                  <param name="Name" value="btnRegister">
+                                                  <param name="Local" value="Olf.FMX.AboutDialogForm.TOlfAboutDialogForm.btnRegister.html">
+                                                  </OBJECT>
+                                              <LI> <OBJECT type="text/sitemap">
+                                                  <param name="Name" value="lblCopyright">
+                                                  <param name="Local" value="Olf.FMX.AboutDialogForm.TOlfAboutDialogForm.lblCopyright.html">
+                                                  </OBJECT>
+                                              <LI> <OBJECT type="text/sitemap">
+                                                  <param name="Name" value="lblDescription">
+                                                  <param name="Local" value="Olf.FMX.AboutDialogForm.TOlfAboutDialogForm.lblDescription.html">
+                                                  </OBJECT>
+                                              <LI> <OBJECT type="text/sitemap">
+                                                  <param name="Name" value="lblFooter">
+                                                  <param name="Local" value="Olf.FMX.AboutDialogForm.TOlfAboutDialogForm.lblFooter.html">
+                                                  </OBJECT>
+                                              <LI> <OBJECT type="text/sitemap">
+                                                  <param name="Name" value="lblLicence">
+                                                  <param name="Local" value="Olf.FMX.AboutDialogForm.TOlfAboutDialogForm.lblLicence.html">
+                                                  </OBJECT>
+                                              <LI> <OBJECT type="text/sitemap">
+                                                  <param name="Name" value="lblTitre">
+                                                  <param name="Local" value="Olf.FMX.AboutDialogForm.TOlfAboutDialogForm.lblTitre.html">
+                                                  </OBJECT>
+                                              <LI> <OBJECT type="text/sitemap">
+                                                  <param name="Name" value="lblURL">
+                                                  <param name="Local" value="Olf.FMX.AboutDialogForm.TOlfAboutDialogForm.lblURL.html">
+                                                  </OBJECT>
+                                              <LI> <OBJECT type="text/sitemap">
+                                                  <param name="Name" value="lblVersion">
+                                                  <param name="Local" value="Olf.FMX.AboutDialogForm.TOlfAboutDialogForm.lblVersion.html">
+                                                  </OBJECT>
+                                              <LI> <OBJECT type="text/sitemap">
+                                                  <param name="Name" value="pnlDescription">
+                                                  <param name="Local" value="Olf.FMX.AboutDialogForm.TOlfAboutDialogForm.pnlDescription.html">
+                                                  </OBJECT>
+                                              <LI> <OBJECT type="text/sitemap">
+                                                  <param name="Name" value="pnlLicence">
+                                                  <param name="Local" value="Olf.FMX.AboutDialogForm.TOlfAboutDialogForm.pnlLicence.html">
+                                                  </OBJECT>
+                                              <LI> <OBJECT type="text/sitemap">
+                                                  <param name="Name" value="zoneBouton">
+                                                  <param name="Local" value="Olf.FMX.AboutDialogForm.TOlfAboutDialogForm.zoneBouton.html">
+                                                  </OBJECT>
+                                              <LI> <OBJECT type="text/sitemap">
+                                                  <param name="Name" value="zoneLogo">
+                                                  <param name="Local" value="Olf.FMX.AboutDialogForm.TOlfAboutDialogForm.zoneLogo.html">
+                                                  </OBJECT>
+                                              <LI> <OBJECT type="text/sitemap">
+                                                  <param name="Name" value="zoneTextes">
+                                                  <param name="Local" value="Olf.FMX.AboutDialogForm.TOlfAboutDialogForm.zoneTextes.html">
+                                                  </OBJECT>
+                                          </UL>
+                                  </UL>
+                          </UL>
+                      <LI> <OBJECT type="text/sitemap">
+                          <param name="Name" value="Enumerations">
+                          </OBJECT>
+                          <UL>
+                              <LI> <OBJECT type="text/sitemap">
+                                  <param name="Name" value="TOlfAboutDialogLang">
+                                  <param name="Local" value="Olf.FMX.AboutDialogForm.TOlfAboutDialogLang.html">
+                                  </OBJECT>
+                                  <UL>
+                                      <LI> <OBJECT type="text/sitemap">
+                                          <param name="Name" value="FR">
+                                          <param name="Local" value="Olf.FMX.AboutDialogForm.TOlfAboutDialogLang.FR.html">
+                                          </OBJECT>
+                                      <LI> <OBJECT type="text/sitemap">
+                                          <param name="Name" value="EN">
+                                          <param name="Local" value="Olf.FMX.AboutDialogForm.TOlfAboutDialogLang.EN.html">
+                                          </OBJECT>
+                                      <LI> <OBJECT type="text/sitemap">
+                                          <param name="Name" value="IT">
+                                          <param name="Local" value="Olf.FMX.AboutDialogForm.TOlfAboutDialogLang.IT.html">
+                                          </OBJECT>
+                                      <LI> <OBJECT type="text/sitemap">
+                                          <param name="Name" value="PT">
+                                          <param name="Local" value="Olf.FMX.AboutDialogForm.TOlfAboutDialogLang.PT.html">
+                                          </OBJECT>
+                                      <LI> <OBJECT type="text/sitemap">
+                                          <param name="Name" value="SP">
+                                          <param name="Local" value="Olf.FMX.AboutDialogForm.TOlfAboutDialogLang.SP.html">
+                                          </OBJECT>
+                                      <LI> <OBJECT type="text/sitemap">
+                                          <param name="Name" value="DE">
+                                          <param name="Local" value="Olf.FMX.AboutDialogForm.TOlfAboutDialogLang.DE.html">
+                                          </OBJECT>
+                                      <LI> <OBJECT type="text/sitemap">
+                                          <param name="Name" value="Manual">
+                                          <param name="Local" value="Olf.FMX.AboutDialogForm.TOlfAboutDialogLang.Manual.html">
+                                          </OBJECT>
+                                      <LI> <OBJECT type="text/sitemap">
+                                          <param name="Name" value="Auto">
+                                          <param name="Local" value="Olf.FMX.AboutDialogForm.TOlfAboutDialogLang.Auto.html">
+                                          </OBJECT>
+                                  </UL>
+                              <LI> <OBJECT type="text/sitemap">
+                                  <param name="Name" value="TOlfAboutDialogTxtID">
+                                  <param name="Local" value="Olf.FMX.AboutDialogForm.TOlfAboutDialogTxtID.html">
+                                  </OBJECT>
+                                  <UL>
+                                      <LI> <OBJECT type="text/sitemap">
+                                          <param name="Name" value="About">
+                                          <param name="Local" value="Olf.FMX.AboutDialogForm.TOlfAboutDialogTxtID.About.html">
+                                          </OBJECT>
+                                      <LI> <OBJECT type="text/sitemap">
+                                          <param name="Name" value="Version">
+                                          <param name="Local" value="Olf.FMX.AboutDialogForm.TOlfAboutDialogTxtID.Version.html">
+                                          </OBJECT>
+                                      <LI> <OBJECT type="text/sitemap">
+                                          <param name="Name" value="Date">
+                                          <param name="Local" value="Olf.FMX.AboutDialogForm.TOlfAboutDialogTxtID.Date.html">
+                                          </OBJECT>
+                                      <LI> <OBJECT type="text/sitemap">
+                                          <param name="Name" value="VersionDate">
+                                          <param name="Local" value="Olf.FMX.AboutDialogForm.TOlfAboutDialogTxtID.VersionDate.html">
+                                          </OBJECT>
+                                      <LI> <OBJECT type="text/sitemap">
+                                          <param name="Name" value="CloseButton">
+                                          <param name="Local" value="Olf.FMX.AboutDialogForm.TOlfAboutDialogTxtID.CloseButton.html">
+                                          </OBJECT>
+                                      <LI> <OBJECT type="text/sitemap">
+                                          <param name="Name" value="Footer">
+                                          <param name="Local" value="Olf.FMX.AboutDialogForm.TOlfAboutDialogTxtID.Footer.html">
+                                          </OBJECT>
+                                      <LI> <OBJECT type="text/sitemap">
+                                          <param name="Name" value="LicenseInfoButton">
+                                          <param name="Local" value="Olf.FMX.AboutDialogForm.TOlfAboutDialogTxtID.LicenseInfoButton.html">
+                                          </OBJECT>
+                                      <LI> <OBJECT type="text/sitemap">
+                                          <param name="Name" value="BuyButton">
+                                          <param name="Local" value="Olf.FMX.AboutDialogForm.TOlfAboutDialogTxtID.BuyButton.html">
+                                          </OBJECT>
+                                      <LI> <OBJECT type="text/sitemap">
+                                          <param name="Name" value="RegisterButton">
+                                          <param name="Local" value="Olf.FMX.AboutDialogForm.TOlfAboutDialogTxtID.RegisterButton.html">
+                                          </OBJECT>
+                                      <LI> <OBJECT type="text/sitemap">
+                                          <param name="Name" value="LicenseText">
+                                          <param name="Local" value="Olf.FMX.AboutDialogForm.TOlfAboutDialogTxtID.LicenseText.html">
+                                          </OBJECT>
+                                      <LI> <OBJECT type="text/sitemap">
+                                          <param name="Name" value="DescriptionText">
+                                          <param name="Local" value="Olf.FMX.AboutDialogForm.TOlfAboutDialogTxtID.DescriptionText.html">
+                                          </OBJECT>
+                                      <LI> <OBJECT type="text/sitemap">
+                                          <param name="Name" value="TitleText">
+                                          <param name="Local" value="Olf.FMX.AboutDialogForm.TOlfAboutDialogTxtID.TitleText.html">
+                                          </OBJECT>
+                                  </UL>
+                          </UL>
+                      <LI> <OBJECT type="text/sitemap">
+                          <param name="Name" value="Delegates">
+                          </OBJECT>
+                          <UL>
+                              <LI> <OBJECT type="text/sitemap">
+                                  <param name="Name" value="TNotifyProc">
+                                  <param name="Local" value="Olf.FMX.AboutDialogForm.TNotifyProc.html">
+                                  </OBJECT>
+                                  <UL>
+                                      <LI> <OBJECT type="text/sitemap">
+                                          <param name="Name" value="Methods">
+                                          </OBJECT>
+                                          <UL>
+                                              <LI> <OBJECT type="text/sitemap">
+                                                  <param name="Name" value="Invoke">
+                                                  <param name="Local" value="Olf.FMX.AboutDialogForm.TNotifyProc.Invoke.html">
+                                                  </OBJECT>
+                                          </UL>
+                                  </UL>
+                              <LI> <OBJECT type="text/sitemap">
+                                  <param name="Name" value="TOlfAboutDialogCloseEvent">
+                                  <param name="Local" value="Olf.FMX.AboutDialogForm.TOlfAboutDialogCloseEvent.html">
+                                  </OBJECT>
+                              <LI> <OBJECT type="text/sitemap">
+                                  <param name="Name" value="TOlfAboutDialogGetTextEvent">
+                                  <param name="Local" value="Olf.FMX.AboutDialogForm.TOlfAboutDialogGetTextEvent.html">
+                                  </OBJECT>
+                              <LI> <OBJECT type="text/sitemap">
+                                  <param name="Name" value="TOlfAboutDialogGetTextProc">
+                                  <param name="Local" value="Olf.FMX.AboutDialogForm.TOlfAboutDialogGetTextProc.html">
+                                  </OBJECT>
+                                  <UL>
+                                      <LI> <OBJECT type="text/sitemap">
+                                          <param name="Name" value="Methods">
+                                          </OBJECT>
+                                          <UL>
+                                              <LI> <OBJECT type="text/sitemap">
+                                                  <param name="Name" value="Invoke">
+                                                  <param name="Local" value="Olf.FMX.AboutDialogForm.TOlfAboutDialogGetTextProc.Invoke.html">
+                                                  </OBJECT>
+                                          </UL>
+                                  </UL>
+                              <LI> <OBJECT type="text/sitemap">
+                                  <param name="Name" value="TOlfAboutDialogURLClickEvent">
+                                  <param name="Local" value="Olf.FMX.AboutDialogForm.TOlfAboutDialogURLClickEvent.html">
+                                  </OBJECT>
+                          </UL>
+                  </UL>
+              <LI> <OBJECT type="text/sitemap">
+                  <param name="Name" value="fMain">
+                  <param name="Local" value="fMain.html">
+                  </OBJECT>
+                  <UL>
+                      <LI> <OBJECT type="text/sitemap">
+                          <param name="Name" value="Classes">
+                          </OBJECT>
+                          <UL>
+                              <LI> <OBJECT type="text/sitemap">
+                                  <param name="Name" value="TfrmMain">
+                                  <param name="Local" value="fMain.TfrmMain.html">
+                                  </OBJECT>
+                                  <UL>
+                                      <LI> <OBJECT type="text/sitemap">
+                                          <param name="Name" value="Methods">
+                                          </OBJECT>
+                                          <UL>
+                                              <LI> <OBJECT type="text/sitemap">
+                                                  <param name="Name" value="AddSpace">
+                                                  <param name="Local" value="fMain.TfrmMain.AddSpace.html">
+                                                  </OBJECT>
+                                              <LI> <OBJECT type="text/sitemap">
+                                                  <param name="Name" value="AjouteSVGSource">
+                                                  <param name="Local" value="fMain.TfrmMain.AjouteSVGSource.html">
+                                                  </OBJECT>
+                                              <LI> <OBJECT type="text/sitemap">
+                                                  <param name="Name" value="FormCreate">
+                                                  <param name="Local" value="fMain.TfrmMain.FormCreate.html">
+                                                  </OBJECT>
+                                              <LI> <OBJECT type="text/sitemap">
+                                                  <param name="Name" value="OnlyChar">
+                                                  <param name="Local" value="fMain.TfrmMain.OnlyChar.html">
+                                                  </OBJECT>
+                                              <LI> <OBJECT type="text/sitemap">
+                                                  <param name="Name" value="StartProcess">
+                                                  <param name="Local" value="fMain.TfrmMain.StartProcess.html">
+                                                  </OBJECT>
+                                              <LI> <OBJECT type="text/sitemap">
+                                                  <param name="Name" value="btnAboutClick">
+                                                  <param name="Local" value="fMain.TfrmMain.btnAboutClick.html">
+                                                  </OBJECT>
+                                              <LI> <OBJECT type="text/sitemap">
+                                                  <param name="Name" value="btnQuitClick">
+                                                  <param name="Local" value="fMain.TfrmMain.btnQuitClick.html">
+                                                  </OBJECT>
+                                              <LI> <OBJECT type="text/sitemap">
+                                                  <param name="Name" value="btnStartClick">
+                                                  <param name="Local" value="fMain.TfrmMain.btnStartClick.html">
+                                                  </OBJECT>
+                                              <LI> <OBJECT type="text/sitemap">
+                                                  <param name="Name" value="getConstantName">
+                                                  <param name="Local" value="fMain.TfrmMain.getConstantName.html">
+                                                  </OBJECT>
+                                          </UL>
+                                      <LI> <OBJECT type="text/sitemap">
+                                          <param name="Name" value="Fields">
+                                          </OBJECT>
+                                          <UL>
+                                              <LI> <OBJECT type="text/sitemap">
+                                                  <param name="Name" value="Memo1">
+                                                  <param name="Local" value="fMain.TfrmMain.Memo1.html">
+                                                  </OBJECT>
+                                              <LI> <OBJECT type="text/sitemap">
+                                                  <param name="Name" value="SaveDialog1">
+                                                  <param name="Local" value="fMain.TfrmMain.SaveDialog1.html">
+                                                  </OBJECT>
+                                              <LI> <OBJECT type="text/sitemap">
+                                                  <param name="Name" value="ToolBar1">
+                                                  <param name="Local" value="fMain.TfrmMain.ToolBar1.html">
+                                                  </OBJECT>
+                                              <LI> <OBJECT type="text/sitemap">
+                                                  <param name="Name" value="btnAbout">
+                                                  <param name="Local" value="fMain.TfrmMain.btnAbout.html">
+                                                  </OBJECT>
+                                              <LI> <OBJECT type="text/sitemap">
+                                                  <param name="Name" value="btnQuit">
+                                                  <param name="Local" value="fMain.TfrmMain.btnQuit.html">
+                                                  </OBJECT>
+                                              <LI> <OBJECT type="text/sitemap">
+                                                  <param name="Name" value="btnStart">
+                                                  <param name="Local" value="fMain.TfrmMain.btnStart.html">
+                                                  </OBJECT>
+                                          </UL>
+                                  </UL>
+                          </UL>
+                      <LI> <OBJECT type="text/sitemap">
+                          <param name="Name" value="Variables">
+                          </OBJECT>
+                          <UL>
+                              <LI> <OBJECT type="text/sitemap">
+                                  <param name="Name" value="frmMain">
+                                  <param name="Local" value="fMain.frmMain.html">
+                                  </OBJECT>
+                          </UL>
+                  </UL>
+              <LI> <OBJECT type="text/sitemap">
+                  <param name="Name" value="uAboutBox">
+                  <param name="Local" value="uAboutBox.html">
+                  </OBJECT>
+                  <UL>
+                      <LI> <OBJECT type="text/sitemap">
+                          <param name="Name" value="Classes">
+                          </OBJECT>
+                          <UL>
+                              <LI> <OBJECT type="text/sitemap">
+                                  <param name="Name" value="TAboutBox">
+                                  <param name="Local" value="uAboutBox.TAboutBox.html">
+                                  </OBJECT>
+                                  <UL>
+                                      <LI> <OBJECT type="text/sitemap">
+                                          <param name="Name" value="Methods">
+                                          </OBJECT>
+                                          <UL>
+                                              <LI> <OBJECT type="text/sitemap">
+                                                  <param name="Name" value="Current">
+                                                  <param name="Local" value="uAboutBox.TAboutBox.Current.html">
+                                                  </OBJECT>
+                                              <LI> <OBJECT type="text/sitemap">
+                                                  <param name="Name" value="DataModuleCreate">
+                                                  <param name="Local" value="uAboutBox.TAboutBox.DataModuleCreate.html">
+                                                  </OBJECT>
+                                              <LI> <OBJECT type="text/sitemap">
+                                                  <param name="Name" value="Execute">
+                                                  <param name="Local" value="uAboutBox.TAboutBox.Execute.html">
+                                                  </OBJECT>
+                                              <LI> <OBJECT type="text/sitemap">
+                                                  <param name="Name" value="OlfAboutDialog1GetText">
+                                                  <param name="Local" value="uAboutBox.TAboutBox.OlfAboutDialog1GetText.html">
+                                                  </OBJECT>
+                                              <LI> <OBJECT type="text/sitemap">
+                                                  <param name="Name" value="OlfAboutDialog1URLClick">
+                                                  <param name="Local" value="uAboutBox.TAboutBox.OlfAboutDialog1URLClick.html">
+                                                  </OBJECT>
+                                          </UL>
+                                      <LI> <OBJECT type="text/sitemap">
+                                          <param name="Name" value="Fields">
+                                          </OBJECT>
+                                          <UL>
+                                              <LI> <OBJECT type="text/sitemap">
+                                                  <param name="Name" value="ImageList1">
+                                                  <param name="Local" value="uAboutBox.TAboutBox.ImageList1.html">
+                                                  </OBJECT>
+                                              <LI> <OBJECT type="text/sitemap">
+                                                  <param name="Name" value="OlfAboutDialog1">
+                                                  <param name="Local" value="uAboutBox.TAboutBox.OlfAboutDialog1.html">
+                                                  </OBJECT>
+                                          </UL>
+                                  </UL>
+                          </UL>
+                  </UL>
+              <LI> <OBJECT type="text/sitemap">
+                  <param name="Name" value="uAboutDescriptionText">
+                  <param name="Local" value="uAboutDescriptionText.html">
+                  </OBJECT>
+                  <UL>
+                      <LI> <OBJECT type="text/sitemap">
+                          <param name="Name" value="Constants">
+                          </OBJECT>
+                          <UL>
+                              <LI> <OBJECT type="text/sitemap">
+                                  <param name="Name" value="CAboutDescriptionEN">
+                                  <param name="Local" value="uAboutDescriptionText.CAboutDescriptionEN.html">
+                                  </OBJECT>
+                          </UL>
+                  </UL>
+              <LI> <OBJECT type="text/sitemap">
+                  <param name="Name" value="uAboutLicenseText">
+                  <param name="Local" value="uAboutLicenseText.html">
+                  </OBJECT>
+                  <UL>
+                      <LI> <OBJECT type="text/sitemap">
+                          <param name="Name" value="Constants">
+                          </OBJECT>
+                          <UL>
+                              <LI> <OBJECT type="text/sitemap">
+                                  <param name="Name" value="CAboutLicenseEN">
+                                  <param name="Local" value="uAboutLicenseText.CAboutLicenseEN.html">
+                                  </OBJECT>
+                          </UL>
+                  </UL>
+              <LI> <OBJECT type="text/sitemap">
+                  <param name="Name" value="uConsts">
+                  <param name="Local" value="uConsts.html">
+                  </OBJECT>
+                  <UL>
+                      <LI> <OBJECT type="text/sitemap">
+                          <param name="Name" value="Constants">
+                          </OBJECT>
+                          <UL>
+                              <LI> <OBJECT type="text/sitemap">
+                                  <param name="Name" value="CVersionDate">
+                                  <param name="Local" value="uConsts.CVersionDate.html">
+                                  </OBJECT>
+                              <LI> <OBJECT type="text/sitemap">
+                                  <param name="Name" value="CVersionNumber">
+                                  <param name="Local" value="uConsts.CVersionNumber.html">
+                                  </OBJECT>
+                          </UL>
+                  </UL>
+              <LI> <OBJECT type="text/sitemap">
+                  <param name="Name" value="u_urlOpen">
+                  <param name="Local" value="u_urlOpen.html">
+                  </OBJECT>
+                  <UL>
+                      <LI> <OBJECT type="text/sitemap">
+                          <param name="Name" value="Routines">
+                          </OBJECT>
+                          <UL>
+                              <LI> <OBJECT type="text/sitemap">
+                                  <param name="Name" value="url_Open_In_Browser">
+                                  <param name="Local" value="u_urlOpen.url_Open_In_Browser.html">
+                                  </OBJECT>
+                          </UL>
+                  </UL>
+          </UL>
+    </UL>
+</BODY>
+</HTML>
