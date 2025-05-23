@@ -4,3 +4,15 @@
 [submodule "lib-externes/AboutDialog-Delphi-Component"]
 	path = lib-externes/AboutDialog-Delphi-Component
 	url = https://github.com/DeveloppeurPascal/AboutDialog-Delphi-Component.git
+[submodule "lib-externes/Delphi-FMXExtend-Library"]
+	path = lib-externes/Delphi-FMXExtend-Library
+	url = https://github.com/DeveloppeurPascal/Delphi-FMXExtend-Library.git
+[submodule "lib-externes/CilTseg4Delphi"]
+	path = lib-externes/CilTseg4Delphi
+	url = https://github.com/DeveloppeurPascal/CilTseg4Delphi.git
+[submodule "lib-externes/FMX-Styles-Utils"]
+	path = lib-externes/FMX-Styles-Utils
+	url = https://github.com/DeveloppeurPascal/FMX-Styles-Utils.git
+[submodule "lib-externes/FMX-Tools-Starter-Kit"]
+	path = lib-externes/FMX-Tools-Starter-Kit
+	url = https://github.com/DeveloppeurPascal/FMX-Tools-Starter-Kit.git
