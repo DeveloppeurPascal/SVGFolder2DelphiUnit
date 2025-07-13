@@ -45,8 +45,8 @@
   https://github.com/DeveloppeurPascal/SVGFolder2DelphiUnit
 
   ***************************************************************************
-  File last update : 2025-07-13T13:47:44.000+02:00
-  Signature : 299d86003a35df12ce0001d6ba38e27e84c915c4
+  File last update : 2025-07-13T14:17:30.000+02:00
+  Signature : 45ca51e7dee26afc32a4bfa8498296c0ba4893ae
   ***************************************************************************
 *)
 
@@ -60,7 +60,8 @@ uses
 procedure ExportFoldersToPascalUnit(const SVGFolders: TStringDynArray;
   const ToUnitFilePath, TabName: string);
 
-function OnlyChar(const S: string): string;
+function OnlyChar(const S: string; const AddUnderscoreAsFirstCharacterIfNumber
+  : boolean = false): string;
 
 implementation
 
@@ -85,7 +86,8 @@ begin
       j := i;
     inc(i);
   end;
-  if (i < length(ForPath)) or ((i < length(CurrentPath)) and (CurrentPath.Chars[i] <> tpath.DirectorySeparatorChar)) then
+  if (i < length(ForPath)) or ((i < length(CurrentPath)) and
+    (CurrentPath.Chars[i] <> tpath.DirectorySeparatorChar)) then
   begin
     result := ForPath.Substring(j + 1);
     i := j + 1;
@@ -105,7 +107,8 @@ begin
   end;
 end;
 
-function OnlyChar(const S: string): string;
+function OnlyChar(const S: string; const AddUnderscoreAsFirstCharacterIfNumber
+  : boolean): string;
 var
   c: char;
   i: integer;
@@ -128,6 +131,8 @@ begin
       else
         result := result + c;
   end;
+  if AddUnderscoreAsFirstCharacterIfNumber and result.Chars[0].IsDigit then
+    result := '_' + result;
 end;
 
 function getConstantName(Const FileName: string): string;
@@ -206,7 +211,8 @@ begin
           SVGList.add(Files[j]);
     end;
 
-    UnitFileName := OnlyChar(tpath.GetFileNameWithoutExtension(ToUnitFilePath));
+    UnitFileName := OnlyChar(tpath.GetFileNameWithoutExtension
+      (ToUnitFilePath), true);
 
     if (SVGList.Count > 0) then
     begin
@@ -222,8 +228,8 @@ begin
             ToUnitFilePath));
         DestinationUnit.add('// ****************************************');
         DestinationUnit.add('//');
-        DestinationUnit.add('// This file contains a list of constants and ');
-        DestinationUnit.add('// an enumeration to access to SVG source codes ');
+        DestinationUnit.add('// This file contains a list of constants and');
+        DestinationUnit.add('// an enumeration to access to SVG source codes');
         DestinationUnit.add('// from the generated array of strings.');
         DestinationUnit.add('//');
         DestinationUnit.add('// ****************************************');
@@ -249,12 +255,12 @@ begin
         for i := 0 to SVGList.Count - 1 do
           if (i < SVGList.Count - 1) then
             DestinationUnit.add(AddSpace(4) +
-              OnlyChar(tpath.GetFileNameWithoutExtension(SVGList[i])) + ' = ' +
-              getConstantName(SVGList[i]) + ',')
+              OnlyChar(tpath.GetFileNameWithoutExtension(SVGList[i]), true) +
+              ' = ' + getConstantName(SVGList[i]) + ',')
           else
             DestinationUnit.add(AddSpace(4) +
-              OnlyChar(tpath.GetFileNameWithoutExtension(SVGList[i])) + ' = ' +
-              getConstantName(SVGList[i]) + ');');
+              OnlyChar(tpath.GetFileNameWithoutExtension(SVGList[i]), true) +
+              ' = ' + getConstantName(SVGList[i]) + ');');
         DestinationUnit.add('');
         DestinationUnit.add(AddSpace(2) + 'T' + TabName + ' = class');
         DestinationUnit.add(AddSpace(2) + 'private');
@@ -277,8 +283,8 @@ begin
         DestinationUnit.add(AddSpace(2) + 'public const');
         for i := 0 to SVGList.Count - 1 do
           DestinationUnit.add(AddSpace(4) +
-            OnlyChar(tpath.GetFileNameWithoutExtension(SVGList[i])) + ' = ' +
-            getConstantName(SVGList[i]) + ';');
+            OnlyChar(tpath.GetFileNameWithoutExtension(SVGList[i]), true) +
+            ' = ' + getConstantName(SVGList[i]) + ';');
         DestinationUnit.add(AddSpace(4) +
           'class property Tag: integer read FTag write SetTag;');
         DestinationUnit.add(AddSpace(4) +
