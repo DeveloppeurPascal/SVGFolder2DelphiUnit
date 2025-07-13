@@ -45,8 +45,8 @@
   https://github.com/DeveloppeurPascal/SVGFolder2DelphiUnit
 
   ***************************************************************************
-  File last update : 2025-07-13T13:35:04.000+02:00
-  Signature : e9681c122b7784a9576ff93e8ec6c4eefd454799
+  File last update : 2025-07-13T13:47:44.000+02:00
+  Signature : 299d86003a35df12ce0001d6ba38e27e84c915c4
   ***************************************************************************
 *)
 
@@ -222,7 +222,7 @@ begin
             ToUnitFilePath));
         DestinationUnit.add('// ****************************************');
         DestinationUnit.add('//');
-        DestinationUnit.add('// This file contains a list of contants and ');
+        DestinationUnit.add('// This file contains a list of constants and ');
         DestinationUnit.add('// an enumeration to access to SVG source codes ');
         DestinationUnit.add('// from the generated array of strings.');
         DestinationUnit.add('//');
