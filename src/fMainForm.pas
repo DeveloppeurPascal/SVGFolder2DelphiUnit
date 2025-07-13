@@ -45,8 +45,8 @@
   https://github.com/DeveloppeurPascal/SVGFolder2DelphiUnit
 
   ***************************************************************************
-  File last update : 2025-07-13T14:35:54.000+02:00
-  Signature : e8f0470373957c41efc304fdef409228a830e08f
+  File last update : 2025-07-13T14:46:20.000+02:00
+  Signature : 5da00f95829559e2beed1e39af1670202112bcd6
   ***************************************************************************
 *)
 
@@ -95,6 +95,7 @@ type
     sdDestUnit: TSaveDialog;
     lblGeneratedName: TLabel;
     edtGeneratedName: TEdit;
+    cbUseMultilineStrings: TCheckBox;
     procedure FormCreate(Sender: TObject);
     procedure btnAboutClick(Sender: TObject);
     procedure btnAddFolderClick(Sender: TObject);
@@ -182,7 +183,8 @@ begin
   if sdDestUnit.Execute then
   begin
     ExportFoldersToPascalUnit(lbFoldersToImport.Items.ToStringArray,
-      sdDestUnit.FileName, edtGeneratedName.Text);
+      sdDestUnit.FileName, edtGeneratedName.Text,
+      cbUseMultilineStrings.IsChecked);
     ShowMessage('Export terminé');
   end;
 end;
@@ -231,6 +233,7 @@ procedure TMainForm.ResetFields;
 begin
   lbFoldersToImport.Clear;
   edtGeneratedName.Text := '';
+  cbUseMultilineStrings.IsChecked := true;
 end;
 
 procedure TMainForm.TranslateTexts(const Language: string);
@@ -245,6 +248,8 @@ begin
     btnExport.Text := 'Exporter';
     btnAbout.Text := 'A propos';
     lblGeneratedName.Text := 'Préfixe des constantes, classes et types générés';
+    cbUseMultilineStrings.Text :=
+      'Exporter des chaînes multilignes (Delphi 12 Athens et au delà)';
   end
   else
   begin
@@ -256,6 +261,8 @@ begin
     btnAbout.Text := 'About';
     lblGeneratedName.Text :=
       'Prefix for generated constants, classes and types';
+    cbUseMultilineStrings.Text :=
+      'Export multiline strings (Delphi 12 Athens and higher)';
   end;
 end;
 

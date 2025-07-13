@@ -123,6 +123,17 @@ inherited MainForm: TMainForm
       Size.Height = 22.000000000000000000
       Size.PlatformDefault = False
     end
+    object cbUseMultilineStrings: TCheckBox
+      Align = Top
+      Margins.Top = 10.000000000000000000
+      Position.X = 5.000000000000000000
+      Position.Y = 331.000000000000000000
+      Size.Width = 630.000000000000000000
+      Size.Height = 19.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 5
+      Text = 'cbUseMultilineStrings'
+    end
   end
   object tbHeader: TToolBar [2]
     Size.Width = 640.000000000000000000
