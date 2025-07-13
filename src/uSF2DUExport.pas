@@ -45,8 +45,8 @@
   https://github.com/DeveloppeurPascal/SVGFolder2DelphiUnit
 
   ***************************************************************************
-  File last update : 2025-07-13T14:17:30.000+02:00
-  Signature : 45ca51e7dee26afc32a4bfa8498296c0ba4893ae
+  File last update : 2025-07-13T15:07:48.000+02:00
+  Signature : d746472bcf3863b87a25d30cca9d80bb7fbe78de
   ***************************************************************************
 *)
 
@@ -58,7 +58,7 @@ uses
   System.Types;
 
 procedure ExportFoldersToPascalUnit(const SVGFolders: TStringDynArray;
-  const ToUnitFilePath, TabName: string);
+  const ToUnitFilePath, TabName: string; const UseMultilineString: boolean);
 
 function OnlyChar(const S: string; const AddUnderscoreAsFirstCharacterIfNumber
   : boolean = false): string;
@@ -107,6 +107,15 @@ begin
   end;
 end;
 
+function AddSpace(const Nb: cardinal): string;
+var
+  i: cardinal;
+begin
+  result := '';
+  for i := 1 to Nb do
+    result := result + ' ';
+end;
+
 function OnlyChar(const S: string; const AddUnderscoreAsFirstCharacterIfNumber
   : boolean): string;
 var
@@ -140,57 +149,73 @@ begin
   result := 'CSVG' + OnlyChar(tpath.GetFileNameWithoutExtension(FileName));
 end;
 
-procedure AjouteSVGSource(Const FileName: string; var Destination: TStringList);
+procedure AjouteSVGSource(Const FileName: string; var Destination: TStringList;
+  const CopyAsPascalStrings: boolean = false);
 const
-  CMaxLineLength = 1000;
+  CMaxMultiLineLength = 1000;
+  CMaxLineLength = 128;
 var
   SVGSource: TStringDynArray;
-  i: integer;
+  i, j: integer;
+  first: boolean;
+  S: string;
   CharPos: integer;
 begin
+  first := true;
   SVGSource := tfile.ReadAllLines(FileName);
   for i := 0 to length(SVGSource) - 1 do
-  begin
-    // replace a SPACE by a NEW LINE
-    if (SVGSource[i].length > CMaxLineLength) then
-    begin
-      SVGSource[i] := SVGSource[i].trim;
-      CharPos := SVGSource[i].LastIndexOf(' ', CMaxLineLength);
-      while (CharPos > -1) and (SVGSource[i].length > CMaxLineLength) do
+    if CopyAsPascalStrings then
+    begin // "old" strings
+      j := 0;
+      while j < SVGSource[i].length do
       begin
-        Destination.add(SVGSource[i].Substring(0, CharPos + 1).trim);
-        SVGSource[i] := SVGSource[i].Substring(CharPos + 1).trim;
-        CharPos := SVGSource[i].LastIndexOf(' ', CMaxLineLength);
-      end;
-    end;
-    // replace a COMMA by a NEW LINE
-    if (SVGSource[i].length > CMaxLineLength) then
-    begin
-      SVGSource[i] := SVGSource[i].trim;
-      CharPos := SVGSource[i].LastIndexOf(',', CMaxLineLength);
-      while (CharPos > -1) and (SVGSource[i].length > CMaxLineLength) do
+        S := SVGSource[i].Substring(j, CMaxLineLength);
+        if not S.IsEmpty then
+          if first then
+          begin
+            Destination.add(AddSpace(2) + '''' + S.Replace('''',
+              '''''') + '''');
+            first := false;
+          end
+          else
+            Destination.add(AddSpace(2) + '+ ''' + S.Replace('''',
+              '''''') + '''');
+        inc(j, CMaxLineLength);
+      end
+    end
+    else
+    begin // multiline strings
+      // replace a SPACE by a NEW LINE
+      if (SVGSource[i].length > CMaxMultiLineLength) then
       begin
-        Destination.add(SVGSource[i].Substring(0, CharPos + 1).trim);
-        SVGSource[i] := SVGSource[i].Substring(CharPos + 1).trim;
-        CharPos := SVGSource[i].LastIndexOf(',', CMaxLineLength);
+        SVGSource[i] := SVGSource[i].trim;
+        CharPos := SVGSource[i].LastIndexOf(' ', CMaxMultiLineLength);
+        while (CharPos > -1) and (SVGSource[i].length > CMaxMultiLineLength) do
+        begin
+          Destination.add(SVGSource[i].Substring(0, CharPos + 1).trim);
+          SVGSource[i] := SVGSource[i].Substring(CharPos + 1).trim;
+          CharPos := SVGSource[i].LastIndexOf(' ', CMaxMultiLineLength);
+        end;
       end;
+      // replace a COMMA by a NEW LINE
+      if (SVGSource[i].length > CMaxMultiLineLength) then
+      begin
+        SVGSource[i] := SVGSource[i].trim;
+        CharPos := SVGSource[i].LastIndexOf(',', CMaxMultiLineLength);
+        while (CharPos > -1) and (SVGSource[i].length > CMaxMultiLineLength) do
+        begin
+          Destination.add(SVGSource[i].Substring(0, CharPos + 1).trim);
+          SVGSource[i] := SVGSource[i].Substring(CharPos + 1).trim;
+          CharPos := SVGSource[i].LastIndexOf(',', CMaxMultiLineLength);
+        end;
+      end;
+      // add the end of the line
+      Destination.add(SVGSource[i]);
     end;
-    // add the end of the line
-    Destination.add(SVGSource[i]);
-  end;
-end;
-
-function AddSpace(const Nb: cardinal): string;
-var
-  i: cardinal;
-begin
-  result := '';
-  for i := 1 to Nb do
-    result := result + ' ';
 end;
 
 procedure ExportFoldersToPascalUnit(const SVGFolders: TStringDynArray;
-  const ToUnitFilePath, TabName: string);
+  const ToUnitFilePath, TabName: string; const UseMultilineString: boolean);
 var
   Files: TStringDynArray;
   SVGList: TStringList;
@@ -379,13 +404,24 @@ begin
         DestinationUnit.add('SetLength(' + TabName + ', ' +
           SVGList.Count.ToString + ');');
         DestinationUnit.add('');
-        DestinationUnit.add('{$TEXTBLOCK NATIVE XML}');
+        if UseMultilineString then
+          DestinationUnit.add('{$TEXTBLOCK NATIVE XML}');
         for i := 0 to SVGList.Count - 1 do
         begin
-          DestinationUnit.add(TabName + '[' + getConstantName(SVGList[i]) +
-            '] := ''''''');
-          AjouteSVGSource(SVGList[i], DestinationUnit);
-          DestinationUnit.add(''''''';');
+          if UseMultilineString then
+          begin
+            DestinationUnit.add(TabName + '[' + getConstantName(SVGList[i]) +
+              '] := ''''''');
+            AjouteSVGSource(SVGList[i], DestinationUnit);
+            DestinationUnit.add(''''''';');
+          end
+          else
+          begin
+            DestinationUnit.add(TabName + '[' + getConstantName(SVGList[i])
+              + '] := ');
+            AjouteSVGSource(SVGList[i], DestinationUnit, true);
+            DestinationUnit.add(';');
+          end;
         end;
         DestinationUnit.add('');
         DestinationUnit.add('end.');
