@@ -1,7 +1,7 @@
 ﻿(* C2PP
   ***************************************************************************
 
-  FMX Tools Starter Kit
+  SVG folder to Delphi unit
 
   Copyright 2024-2025 Patrick Prémartin under AGPL 3.0 license.
 
@@ -15,7 +15,23 @@
 
   ***************************************************************************
 
-  A starter kit for your FireMonkey projects in Delphi.
+  This program is designed for Delphi developers wishing to use vector
+  images (in SVG format) into their projects.
+
+  It generates a unit from the list of SVG files contained in a folder.
+
+  An SVG list is created as an array of multilines strings containing the
+  textual source code of each vector image.
+
+  Constants and an enumeration containing the unit name and the SVG file
+  names provide the indices of the associated source code in the list. This
+  makes it easier to find your way around and manage several SVG lists in a
+  single project.
+
+  You can use the result in a VCL or FireMonkey Delphi project, with Skia
+  enabled (via Skia4Delphi project or natively) and the unit
+  Olf.Skia.SVGToBitmap.pas from
+  https://github.com/DeveloppeurPascal/librairies/
 
   ***************************************************************************
 
@@ -23,23 +39,20 @@
   Patrick PREMARTIN
 
   Site :
-  https://fmxtoolsstarterkit.developpeur-pascal.fr/
+  https://svgfolder2delphiunit.olfsoftware.fr/
 
   Project site :
-  https://github.com/DeveloppeurPascal/FMX-Tools-Starter-Kit
+  https://github.com/DeveloppeurPascal/SVGFolder2DelphiUnit
 
   ***************************************************************************
-  File last update : 2025-05-24T20:31:55.364+02:00
-  Signature : 13c3771067c1180f047edd7f75b763c71ba1c1da
+  File last update : 2025-07-13T11:33:14.000+02:00
+  Signature : 128c63571098bdf77e7004f294b6c5d21de21897
   ***************************************************************************
 *)
 
 unit fMainForm;
 
 interface
-
-{$MESSAGE WARN 'Save this file to your project directory. It''s your main form.'}
-// TODO : Save this file to your project directory. It's your main form.
 
 uses
   System.SysUtils,
@@ -57,16 +70,44 @@ uses
   System.Actions,
   FMX.ActnList,
   FMX.Menus,
-  uDocumentsAncestor;
+  uDocumentsAncestor,
+  FMX.Layouts,
+  FMX.ListBox,
+  FMX.Controls.Presentation,
+  Olf.FMX.SelectDirectory;
 
 type
   TMainForm = class(T__MainFormAncestor)
+    VertScrollBox1: TVertScrollBox;
+    lblFoldersToImport: TLabel;
+    lbFoldersToImport: TListBox;
+    gplFoldersToImport: TGridPanelLayout;
+    btnAddFolder: TButton;
+    btnRemoveFolder: TButton;
+    btnExport: TButton;
+    sdImportFolder: TOlfSelectDirectoryDialog;
+    tbHeader: TToolBar;
+    btnReset: TButton;
+    tbFooter: TToolBar;
+    btnAbout: TButton;
+    btnClose: TButton;
+    procedure FormCreate(Sender: TObject);
+    procedure btnAboutClick(Sender: TObject);
+    procedure btnAddFolderClick(Sender: TObject);
+    procedure lbFoldersToImportDragOver(Sender: TObject;
+      const Data: TDragObject; const Point: TPointF;
+      var Operation: TDragOperation);
+    procedure lbFoldersToImportDragDrop(Sender: TObject;
+      const Data: TDragObject; const Point: TPointF);
+    procedure btnRemoveFolderClick(Sender: TObject);
+    procedure btnExportClick(Sender: TObject);
   private
   protected
-    function GetNewDoc(const FileName: string = ''): TDocumentAncestor;
-      override;
+    procedure ResetFields;
+    procedure DoDocumentNewAction(Sender: TObject); override;
+    procedure AddFolderToList(const Folder: string);
   public
-
+    procedure TranslateTexts(const Language: string); override;
   end;
 
 var
@@ -75,14 +116,114 @@ var
 implementation
 
 {$R *.fmx}
-{ TMainForm }
 
-function TMainForm.GetNewDoc(const FileName: string): TDocumentAncestor;
+uses
+  System.IOUtils;
+
+procedure TMainForm.AddFolderToList(const Folder: string);
+var
+  i: integer;
+  ct: integer;
 begin
-{$MESSAGE WARN 'Create an instance of your document and remove this comment.'}
-  // TODO : Create an instance of your document and remove this comment
-  // result := TYourDocumentType.Create;
-  result := nil;
+  if Folder.isempty or (not TDirectory.Exists(Folder)) then
+    exit;
+
+  for i := 0 to lbFoldersToImport.Items.Count - 1 do
+  begin
+    ct := comparetext(lbFoldersToImport.Items[i], Folder);
+    if ct = 0 then // equal
+      exit
+    else if ct > 0 then // current folder is greater than the folder to add
+      break;
+  end;
+
+  lbFoldersToImport.Items.Add(Folder);
+end;
+
+procedure TMainForm.btnAboutClick(Sender: TObject);
+begin
+  DoAboutAction(Sender);
+end;
+
+procedure TMainForm.btnAddFolderClick(Sender: TObject);
+begin
+  if sdImportFolder.Root.isempty then
+    sdImportFolder.Root := tpath.GetDocumentsPath;
+  if sdImportFolder.Execute then
+    AddFolderToList(sdImportFolder.Directory);
+end;
+
+procedure TMainForm.btnExportClick(Sender: TObject);
+begin
+//
+end;
+
+procedure TMainForm.btnRemoveFolderClick(Sender: TObject);
+begin
+  if assigned(lbFoldersToImport.Selected) then
+    lbFoldersToImport.Selected.Free;
+end;
+
+procedure TMainForm.DoDocumentNewAction(Sender: TObject);
+begin
+  ResetFields;
+end;
+
+procedure TMainForm.FormCreate(Sender: TObject);
+begin
+  ResetFields;
+end;
+
+procedure TMainForm.lbFoldersToImportDragDrop(Sender: TObject;
+  const Data: TDragObject; const Point: TPointF);
+var
+  i: integer;
+begin
+  for i := 0 to length(Data.Files) - 1 do
+    AddFolderToList(Data.Files[i]);
+end;
+
+procedure TMainForm.lbFoldersToImportDragOver(Sender: TObject;
+  const Data: TDragObject; const Point: TPointF; var Operation: TDragOperation);
+var
+  i: integer;
+begin
+  if length(Data.Files) > 0 then
+    for i := 0 to length(Data.Files) - 1 do
+      if TDirectory.Exists(Data.Files[i]) then
+      begin
+        Operation := TDragOperation.Copy;
+        exit;
+      end;
+  Operation := TDragOperation.None;
+end;
+
+procedure TMainForm.ResetFields;
+begin
+  // TODO : à compléter
+end;
+
+procedure TMainForm.TranslateTexts(const Language: string);
+begin
+  inherited;
+  if Language = 'fr' then
+  begin
+    lblFoldersToImport.Text := 'Dossiers des SVG';
+    btnAddFolder.Text := 'Ajouter';
+    btnRemoveFolder.Text := 'Retirer';
+    sdImportFolder.Text := 'Choisissez un dossier';
+    btnExport.Text := 'Exporter';
+    btnAbout.Text := 'A propos';
+  end
+  else
+  begin
+    lblFoldersToImport.Text := 'SVG folders';
+    btnAddFolder.Text := 'Add';
+    btnRemoveFolder.Text := 'Remove';
+    sdImportFolder.Text := 'Choose a folder';
+    btnExport.Text := 'Export';
+    btnAbout.Text := 'About';
+  end;
 end;
 
 end.

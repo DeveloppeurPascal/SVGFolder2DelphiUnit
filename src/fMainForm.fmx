@@ -1,4 +1,188 @@
 inherited MainForm: TMainForm
   Caption = '__MainFormAncestor1'
+  OnCreate = FormCreate
   DesignerMasterStyle = 0
+  object VertScrollBox1: TVertScrollBox [1]
+    Align = Client
+    Padding.Left = 5.000000000000000000
+    Padding.Top = 5.000000000000000000
+    Padding.Right = 5.000000000000000000
+    Padding.Bottom = 5.000000000000000000
+    Size.Width = 640.000000000000000000
+    Size.Height = 400.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 2
+    Viewport.Width = 640.000000000000000000
+    Viewport.Height = 400.000000000000000000
+    object lblFoldersToImport: TLabel
+      Align = Top
+      Position.X = 5.000000000000000000
+      Position.Y = 5.000000000000000000
+      Size.Width = 630.000000000000000000
+      Size.Height = 17.000000000000000000
+      Size.PlatformDefault = False
+      Text = 'lblFoldersToImport'
+      TabOrder = 0
+    end
+    object lbFoldersToImport: TListBox
+      Align = Top
+      Position.X = 5.000000000000000000
+      Position.Y = 22.000000000000000000
+      Size.Width = 630.000000000000000000
+      Size.Height = 200.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 1
+      OnDragOver = lbFoldersToImportDragOver
+      OnDragDrop = lbFoldersToImportDragDrop
+      DisableFocusEffect = True
+      DefaultItemStyles.ItemStyle = ''
+      DefaultItemStyles.GroupHeaderStyle = ''
+      DefaultItemStyles.GroupFooterStyle = ''
+      Sorted = True
+      Viewport.Width = 626.000000000000000000
+      Viewport.Height = 196.000000000000000000
+    end
+    object gplFoldersToImport: TGridPanelLayout
+      Align = Top
+      Position.X = 5.000000000000000000
+      Position.Y = 222.000000000000000000
+      Size.Width = 630.000000000000000000
+      Size.Height = 50.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 2
+      ColumnCollection = <
+        item
+          Value = 50.000000000000000000
+        end
+        item
+          Value = 50.000000000000000000
+        end>
+      ControlCollection = <
+        item
+          Column = 0
+          Control = btnAddFolder
+          Row = 0
+        end
+        item
+          Column = 1
+          Control = btnRemoveFolder
+          Row = 0
+        end>
+      RowCollection = <
+        item
+          Value = 100.000000000000000000
+        end>
+      object btnAddFolder: TButton
+        Align = Client
+        Margins.Left = 5.000000000000000000
+        Margins.Top = 5.000000000000000000
+        Margins.Right = 5.000000000000000000
+        Margins.Bottom = 5.000000000000000000
+        Size.Width = 305.000000000000000000
+        Size.Height = 40.000000000000000000
+        Size.PlatformDefault = False
+        TabOrder = 0
+        Text = 'btnAddFolder'
+        TextSettings.Trimming = None
+        OnClick = btnAddFolderClick
+      end
+      object btnRemoveFolder: TButton
+        Align = Client
+        Margins.Left = 5.000000000000000000
+        Margins.Top = 5.000000000000000000
+        Margins.Right = 5.000000000000000000
+        Margins.Bottom = 5.000000000000000000
+        Size.Width = 305.000000000000000000
+        Size.Height = 40.000000000000000000
+        Size.PlatformDefault = False
+        TabOrder = 1
+        Text = 'btnRemoveFolder'
+        TextSettings.Trimming = None
+        OnClick = btnRemoveFolderClick
+      end
+    end
+  end
+  object tbHeader: TToolBar [2]
+    Size.Width = 640.000000000000000000
+    Size.Height = 40.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 4
+    object btnReset: TButton
+      Action = actNewDocument
+      Align = Left
+      ImageIndex = -1
+      Margins.Left = 5.000000000000000000
+      Margins.Top = 5.000000000000000000
+      Margins.Right = 5.000000000000000000
+      Margins.Bottom = 5.000000000000000000
+      Position.X = 5.000000000000000000
+      Position.Y = 5.000000000000000000
+      Size.Width = 80.000000000000000000
+      Size.Height = 30.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 0
+      TextSettings.Trimming = None
+    end
+    object btnAbout: TButton
+      Align = Right
+      Margins.Left = 5.000000000000000000
+      Margins.Top = 5.000000000000000000
+      Margins.Right = 5.000000000000000000
+      Margins.Bottom = 5.000000000000000000
+      Position.X = 465.000000000000000000
+      Position.Y = 5.000000000000000000
+      Size.Width = 80.000000000000000000
+      Size.Height = 30.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 1
+      Text = 'actAbout'
+      TextSettings.Trimming = None
+      OnClick = btnAboutClick
+    end
+    object btnClose: TButton
+      Action = actQuit
+      Align = MostRight
+      ImageIndex = -1
+      Margins.Left = 5.000000000000000000
+      Margins.Top = 5.000000000000000000
+      Margins.Right = 5.000000000000000000
+      Margins.Bottom = 5.000000000000000000
+      Position.X = 555.000000000000000000
+      Position.Y = 5.000000000000000000
+      Size.Width = 80.000000000000000000
+      Size.Height = 30.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 2
+      TextSettings.Trimming = None
+    end
+  end
+  object tbFooter: TToolBar [3]
+    Align = Bottom
+    Position.Y = 440.000000000000000000
+    Size.Width = 640.000000000000000000
+    Size.Height = 40.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 5
+    object btnExport: TButton
+      Align = Right
+      Margins.Left = 5.000000000000000000
+      Margins.Top = 5.000000000000000000
+      Margins.Right = 5.000000000000000000
+      Margins.Bottom = 5.000000000000000000
+      Position.X = 555.000000000000000000
+      Position.Y = 5.000000000000000000
+      Size.Width = 80.000000000000000000
+      Size.Height = 30.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 0
+      Text = 'btnExport'
+      TextSettings.Trimming = None
+      OnClick = btnExportClick
+    end
+  end
+  object sdImportFolder: TOlfSelectDirectoryDialog
+    Root = ''
+    Left = 144
+    Top = 336
+  end
 end
