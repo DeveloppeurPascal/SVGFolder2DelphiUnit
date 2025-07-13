@@ -45,8 +45,8 @@
   https://github.com/DeveloppeurPascal/SVGFolder2DelphiUnit
 
   ***************************************************************************
-  File last update : 2025-07-13T13:46:50.000+02:00
-  Signature : dc564f557a467bd6995d35fce0a3b5a69fcbf1ff
+  File last update : 2025-07-13T14:35:54.000+02:00
+  Signature : e8f0470373957c41efc304fdef409228a830e08f
   ***************************************************************************
 *)
 
@@ -74,7 +74,8 @@ uses
   FMX.Layouts,
   FMX.ListBox,
   FMX.Controls.Presentation,
-  Olf.FMX.SelectDirectory;
+  Olf.FMX.SelectDirectory,
+  FMX.Edit;
 
 type
   TMainForm = class(T__MainFormAncestor)
@@ -92,6 +93,8 @@ type
     btnAbout: TButton;
     btnClose: TButton;
     sdDestUnit: TSaveDialog;
+    lblGeneratedName: TLabel;
+    edtGeneratedName: TEdit;
     procedure FormCreate(Sender: TObject);
     procedure btnAboutClick(Sender: TObject);
     procedure btnAddFolderClick(Sender: TObject);
@@ -127,7 +130,7 @@ var
   i: integer;
   ct: integer;
 begin
-  if Folder.isempty or (not TDirectory.Exists(Folder)) then
+  if Folder.IsEmpty or (not TDirectory.Exists(Folder)) then
     exit;
 
   for i := 0 to lbFoldersToImport.Items.Count - 1 do
@@ -140,6 +143,10 @@ begin
   end;
 
   lbFoldersToImport.Items.Add(Folder);
+
+  if edtGeneratedName.Text.Trim.IsEmpty then
+    edtGeneratedName.Text := 'SVG' +
+      OnlyChar(TPath.GetFileNameWithoutExtension(Folder));
 end;
 
 procedure TMainForm.btnAboutClick(Sender: TObject);
@@ -149,8 +156,8 @@ end;
 
 procedure TMainForm.btnAddFolderClick(Sender: TObject);
 begin
-  if sdImportFolder.Root.isempty then
-    sdImportFolder.Root := tpath.GetDocumentsPath;
+  if sdImportFolder.Root.IsEmpty then
+    sdImportFolder.Root := TPath.GetDocumentsPath;
   if sdImportFolder.Execute then
   begin
     AddFolderToList(sdImportFolder.Directory);
@@ -159,21 +166,23 @@ begin
 end;
 
 procedure TMainForm.btnExportClick(Sender: TObject);
-var
-  TabName: string;
 begin
   if lbFoldersToImport.Items.Count < 1 then
-    exit;
+    raise exception.Create('At least one folder is needed !');
+  // TODO : traduire texte
+
+  edtGeneratedName.Text := OnlyChar(edtGeneratedName.Text.Trim);
+  if edtGeneratedName.Text.IsEmpty then
+    raise exception.Create
+      ('Need a valid Pascal identifier for the unit, classes, enums and constants.');
+  // TODO : traduire texte
 
   sdDestUnit.InitialDir := lbFoldersToImport.Items[0];
-  TabName := OnlyChar(tpath.GetFileName(sdDestUnit.InitialDir));
-  // TODO : à personnaliser dans l'interface utilisateur
-  sdDestUnit.FileName := 'uSVG' + TabName + '.pas';
-  // TODO : à personnaliser dans l'interface utilisateur
+  sdDestUnit.FileName := 'u' + edtGeneratedName.Text + '.pas';
   if sdDestUnit.Execute then
   begin
     ExportFoldersToPascalUnit(lbFoldersToImport.Items.ToStringArray,
-      sdDestUnit.FileName, 'SVG' + TabName);
+      sdDestUnit.FileName, edtGeneratedName.Text);
     ShowMessage('Export terminé');
   end;
 end;
@@ -221,6 +230,7 @@ end;
 procedure TMainForm.ResetFields;
 begin
   lbFoldersToImport.Clear;
+  edtGeneratedName.Text := '';
 end;
 
 procedure TMainForm.TranslateTexts(const Language: string);
@@ -234,6 +244,7 @@ begin
     sdImportFolder.Text := 'Choisissez un dossier';
     btnExport.Text := 'Exporter';
     btnAbout.Text := 'A propos';
+    lblGeneratedName.Text := 'Préfixe des constantes, classes et types générés';
   end
   else
   begin
@@ -243,6 +254,8 @@ begin
     sdImportFolder.Text := 'Choose a folder';
     btnExport.Text := 'Export';
     btnAbout.Text := 'About';
+    lblGeneratedName.Text :=
+      'Prefix for generated constants, classes and types';
   end;
 end;
 

@@ -1,5 +1,6 @@
 inherited MainForm: TMainForm
   Caption = '__MainFormAncestor1'
+  ClientHeight = 718
   OnCreate = FormCreate
   DesignerMasterStyle = 0
   object VertScrollBox1: TVertScrollBox [1]
@@ -9,11 +10,11 @@ inherited MainForm: TMainForm
     Padding.Right = 5.000000000000000000
     Padding.Bottom = 5.000000000000000000
     Size.Width = 640.000000000000000000
-    Size.Height = 400.000000000000000000
+    Size.Height = 638.000000000000000000
     Size.PlatformDefault = False
     TabOrder = 2
     Viewport.Width = 640.000000000000000000
-    Viewport.Height = 400.000000000000000000
+    Viewport.Height = 638.000000000000000000
     object lblFoldersToImport: TLabel
       Align = Top
       Position.X = 5.000000000000000000
@@ -101,6 +102,27 @@ inherited MainForm: TMainForm
         OnClick = btnRemoveFolderClick
       end
     end
+    object lblGeneratedName: TLabel
+      Align = Top
+      Margins.Top = 10.000000000000000000
+      Position.X = 5.000000000000000000
+      Position.Y = 282.000000000000000000
+      Size.Width = 630.000000000000000000
+      Size.Height = 17.000000000000000000
+      Size.PlatformDefault = False
+      Text = 'lblGeneratedName'
+      TabOrder = 3
+    end
+    object edtGeneratedName: TEdit
+      Touch.InteractiveGestures = [LongTap, DoubleTap]
+      Align = Top
+      TabOrder = 4
+      Position.X = 5.000000000000000000
+      Position.Y = 299.000000000000000000
+      Size.Width = 630.000000000000000000
+      Size.Height = 22.000000000000000000
+      Size.PlatformDefault = False
+    end
   end
   object tbHeader: TToolBar [2]
     Size.Width = 640.000000000000000000
@@ -158,7 +180,7 @@ inherited MainForm: TMainForm
   end
   object tbFooter: TToolBar [3]
     Align = Bottom
-    Position.Y = 440.000000000000000000
+    Position.Y = 678.000000000000000000
     Size.Width = 640.000000000000000000
     Size.Height = 40.000000000000000000
     Size.PlatformDefault = False
