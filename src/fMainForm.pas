@@ -45,8 +45,8 @@
   https://github.com/DeveloppeurPascal/SVGFolder2DelphiUnit
 
   ***************************************************************************
-  File last update : 2025-07-13T11:33:14.000+02:00
-  Signature : 128c63571098bdf77e7004f294b6c5d21de21897
+  File last update : 2025-07-13T12:29:44.000+02:00
+  Signature : 3b8e0ca789fe9439b313fd0f2350b9054de932cb
   ***************************************************************************
 *)
 
@@ -91,6 +91,7 @@ type
     tbFooter: TToolBar;
     btnAbout: TButton;
     btnClose: TButton;
+    sdDestUnit: TSaveDialog;
     procedure FormCreate(Sender: TObject);
     procedure btnAboutClick(Sender: TObject);
     procedure btnAddFolderClick(Sender: TObject);
@@ -118,7 +119,8 @@ implementation
 {$R *.fmx}
 
 uses
-  System.IOUtils;
+  System.IOUtils,
+  uSF2DUExport;
 
 procedure TMainForm.AddFolderToList(const Folder: string);
 var
@@ -150,12 +152,30 @@ begin
   if sdImportFolder.Root.isempty then
     sdImportFolder.Root := tpath.GetDocumentsPath;
   if sdImportFolder.Execute then
+  begin
     AddFolderToList(sdImportFolder.Directory);
+    sdImportFolder.Root := sdImportFolder.Directory;
+  end;
 end;
 
 procedure TMainForm.btnExportClick(Sender: TObject);
+var
+  TabName: string;
 begin
-//
+  if lbFoldersToImport.Items.Count < 1 then
+    exit;
+
+  sdDestUnit.InitialDir := lbFoldersToImport.Items[0];
+  TabName := OnlyChar(tpath.GetFileName(sdDestUnit.InitialDir));
+  // TODO : à personnaliser dans l'interface utilisateur
+  sdDestUnit.FileName := 'uSVG' + TabName + '.pas';
+  // TODO : à personnaliser dans l'interface utilisateur
+  if sdDestUnit.Execute then
+  begin
+    ExportFoldersToPascalUnit(lbFoldersToImport.Items.ToStringArray,
+      sdDestUnit.FileName, 'SVG' + TabName);
+    ShowMessage('Export terminé');
+  end;
 end;
 
 procedure TMainForm.btnRemoveFolderClick(Sender: TObject);

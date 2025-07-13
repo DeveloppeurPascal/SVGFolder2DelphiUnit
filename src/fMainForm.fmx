@@ -180,9 +180,17 @@ inherited MainForm: TMainForm
       OnClick = btnExportClick
     end
   end
-  object sdImportFolder: TOlfSelectDirectoryDialog
+  object sdImportFolder: TOlfSelectDirectoryDialog [4]
     Root = ''
     Left = 144
     Top = 336
+  end
+  object sdDestUnit: TSaveDialog [5]
+    DefaultExt = '*.pas'
+    Filter = 'Fichier Pascal (*.pas)|*.pas'
+    Options = [ofOverwritePrompt, ofHideReadOnly, ofPathMustExist, ofEnableSizing]
+    Title = 'Destination unit file'
+    Left = 296
+    Top = 344
   end
 end
