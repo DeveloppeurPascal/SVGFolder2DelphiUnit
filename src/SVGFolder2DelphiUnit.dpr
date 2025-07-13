@@ -45,8 +45,8 @@
   https://github.com/DeveloppeurPascal/SVGFolder2DelphiUnit
 
   ***************************************************************************
-  File last update : 2025-07-13T10:14:12.000+02:00
-  Signature : c0bac1c5a5deb1ca6d1119d5abc894f0ac9cff45
+  File last update : 2025-07-13T11:35:00.000+02:00
+  Signature : 2924dd61fe2b2d186bb3d956a821c196ff3d1186
   ***************************************************************************
 *)
 
@@ -88,7 +88,16 @@ uses
   uStyleManager in '..\lib-externes\FMX-Styles-Utils\src\uStyleManager.pas',
   uStyleDarkByDefault in '..\lib-externes\FMX-Styles-Utils\samples\DarkLightSampleProject\uStyleDarkByDefault.pas' {StyleDarkByDefault: TDataModule},
   uStyleLightByDefault in '..\lib-externes\FMX-Styles-Utils\samples\DarkLightSampleProject\uStyleLightByDefault.pas' {StyleLightByDefault: TDataModule},
-  uGetDeviceName in '..\lib-externes\librairies\src\uGetDeviceName.pas';
+  uGetDeviceName in '..\lib-externes\librairies\src\uGetDeviceName.pas',
+  uStyleImpressiveDark in '..\_PRIVATE\src\uStyleImpressiveDark.pas' {StyleImpressiveDark: TDataModule},
+  uStyleImpressiveLight in '..\_PRIVATE\src\uStyleImpressiveLight.pas' {StyleImpressiveLight: TDataModule},
+  uStylePolarDark in '..\_PRIVATE\src\uStylePolarDark.pas' {StylePolarDark: TDataModule},
+  uStylePolarLight in '..\_PRIVATE\src\uStylePolarLight.pas' {StylePolarLight: TDataModule},
+  uStyleCoralCrystal in '..\lib-externes\FMX-Tools-Starter-Kit\samples\01-NoDocProject\uStyleCoralCrystal.pas' {dmStyleCoralCrystal: TDataModule},
+  uStyleGoldenGraphite in '..\lib-externes\FMX-Tools-Starter-Kit\samples\01-NoDocProject\uStyleGoldenGraphite.pas' {dmStyleGoldenGraphite: TDataModule},
+  uStyleTransparent in '..\lib-externes\FMX-Tools-Starter-Kit\samples\01-NoDocProject\uStyleTransparent.pas' {dmStyleTransparent: TDataModule},
+  uStyleWin10ModernBlue in '..\lib-externes\FMX-Tools-Starter-Kit\samples\01-NoDocProject\uStyleWin10ModernBlue.pas' {dmStyleWin10ModernBlue: TDataModule},
+  uSF2DUExport in 'uSF2DUExport.pas';
 
 {$R *.res}
 

@@ -580,6 +580,47 @@
             <DesignClass>TDataModule</DesignClass>
         </DCCReference>
         <DCCReference Include="..\lib-externes\librairies\src\uGetDeviceName.pas"/>
+        <DCCReference Include="..\_PRIVATE\src\uStyleImpressiveDark.pas">
+            <Form>StyleImpressiveDark</Form>
+            <FormType>dfm</FormType>
+            <DesignClass>TDataModule</DesignClass>
+        </DCCReference>
+        <DCCReference Include="..\_PRIVATE\src\uStyleImpressiveLight.pas">
+            <Form>StyleImpressiveLight</Form>
+            <FormType>dfm</FormType>
+            <DesignClass>TDataModule</DesignClass>
+        </DCCReference>
+        <DCCReference Include="..\_PRIVATE\src\uStylePolarDark.pas">
+            <Form>StylePolarDark</Form>
+            <FormType>dfm</FormType>
+            <DesignClass>TDataModule</DesignClass>
+        </DCCReference>
+        <DCCReference Include="..\_PRIVATE\src\uStylePolarLight.pas">
+            <Form>StylePolarLight</Form>
+            <FormType>dfm</FormType>
+            <DesignClass>TDataModule</DesignClass>
+        </DCCReference>
+        <DCCReference Include="..\lib-externes\FMX-Tools-Starter-Kit\samples\01-NoDocProject\uStyleCoralCrystal.pas">
+            <Form>dmStyleCoralCrystal</Form>
+            <FormType>dfm</FormType>
+            <DesignClass>TDataModule</DesignClass>
+        </DCCReference>
+        <DCCReference Include="..\lib-externes\FMX-Tools-Starter-Kit\samples\01-NoDocProject\uStyleGoldenGraphite.pas">
+            <Form>dmStyleGoldenGraphite</Form>
+            <FormType>dfm</FormType>
+            <DesignClass>TDataModule</DesignClass>
+        </DCCReference>
+        <DCCReference Include="..\lib-externes\FMX-Tools-Starter-Kit\samples\01-NoDocProject\uStyleTransparent.pas">
+            <Form>dmStyleTransparent</Form>
+            <FormType>dfm</FormType>
+            <DesignClass>TDataModule</DesignClass>
+        </DCCReference>
+        <DCCReference Include="..\lib-externes\FMX-Tools-Starter-Kit\samples\01-NoDocProject\uStyleWin10ModernBlue.pas">
+            <Form>dmStyleWin10ModernBlue</Form>
+            <FormType>dfm</FormType>
+            <DesignClass>TDataModule</DesignClass>
+        </DCCReference>
+        <DCCReference Include="uSF2DUExport.pas"/>
         <BuildConfiguration Include="Base">
             <Key>Base</Key>
         </BuildConfiguration>
