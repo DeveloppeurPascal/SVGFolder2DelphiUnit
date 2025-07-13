@@ -45,8 +45,8 @@
   https://github.com/DeveloppeurPascal/SVGFolder2DelphiUnit
 
   ***************************************************************************
-  File last update : 2025-05-25T15:38:39.993+02:00
-  Signature : a2409f808431026af3b20ad5e3724b61d350726c
+  File last update : 2025-07-13T16:03:32.488+02:00
+  Signature : 0d3c75fe7bfb30b8bc26994f9f95d607c69e70e1
   ***************************************************************************
 *)
 
@@ -54,23 +54,35 @@ unit USVGSampleSVGFromGoogle;
 
 // ****************************************
 // * SVG from folder :
-// * C:\Users\patrickpremartin\Documents\Embarcadero\Studio\Projets\SVGFolder2DelphiUnit\assets\SampleSVGFromGoogle\USVGSampleSVGFromGoogle.pas
+// * .\
 // ****************************************
 //
-// This file contains a list of contants and 
-// an enumeration to access to SVG source codes 
+// This file contains a list of constants and
+// an enumeration to access to SVG source codes
 // from the generated array of strings.
 //
 // ****************************************
-// File generator : SVG Folder to Delphi Unit v1.0
-// Website : https://svgfolder2delphiunit.olfsoftware.fr/
-// Generation date : 2024-08-06T19:26:06.559Z
+// File generator : SVG Folder To Delphi Unit v2.0
+// Website : https://svgfolder2delphiunit.olfsoftware.fr
+// Generation date : 2025-07-13T16:03:32.471Z
 //
 // Don't do any change on this file.
 // They will be erased by next generation !
 // ****************************************
 
 interface
+
+{$IF Defined(FRAMEWORK_VCL)}
+
+uses
+  VCL.Graphics;
+{$ELSE IF Defined(FRAMEWORK_FMX)}
+
+uses
+  FMX.Graphics;
+{$ELSE}
+{$MESSAGE FATAL 'Is it a VCL or FMX program ?'}
+{$ENDIF}
 
 const
   CSVGAccount = 0;
@@ -100,6 +112,7 @@ type
     FTagFloat: Single;
     FTagObject: TObject;
     FTagString: string;
+    FBitmapListIndex: integer;
     class procedure SetTag(const Value: integer); static;
     class procedure SetTagBool(const Value: Boolean); static;
     class procedure SetTagFloat(const Value: Single); static;
@@ -122,14 +135,23 @@ type
     class function SVG(const Index: TSVGSampleSVGFromGoogleIndex) : string; overload;
     class function Count : Integer;
     class constructor Create;
+    class function Bitmap(const Index: TSVGSampleSVGFromGoogleIndex;
+      const width, height: single; const BitmapScale: single): TBitmap;
   end;
 
 var
   SVGSampleSVGFromGoogle : array of String;
 
+/// <summary>
+/// Returns a bitmap from a TSVGSampleSVGFromGoogle SVG file
+/// </summary>
+function getBitmapFromSVG(const Index: TSVGSampleSVGFromGoogleIndex;
+  const width, height: single; const BitmapScale: single): tbitmap; overload;
+
 implementation
 
 uses
+  Olf.Skia.SVGToBitmap,
   System.SysUtils;
 
 { TSVGSampleSVGFromGoogle }
@@ -137,6 +159,7 @@ uses
 class constructor TSVGSampleSVGFromGoogle.Create;
 begin
   inherited;
+  FBitmapListIndex := 0;
   FTag := 0;
   FTagBool := false;
   FTagFloat := 0;
@@ -187,6 +210,24 @@ begin
   result := length(SVGSampleSVGFromGoogle);
 end;
 
+class function TSVGSampleSVGFromGoogle.Bitmap(const Index: TSVGSampleSVGFromGoogleIndex;
+  const width, height: single; const BitmapScale: single): TBitmap;
+begin
+  result := TOlfSVGBitmapList.Bitmap(ord(Index) + TSVGSampleSVGFromGoogle.FBitmapListIndex,
+    round(width), round(height), BitmapScale);
+end;
+
+procedure RegisterSVGBitmap;
+begin
+  TSVGSampleSVGFromGoogle.FBitmapListIndex := TOlfSVGBitmapList.AddItem(SVGSampleSVGFromGoogle);
+end;
+
+function getBitmapFromSVG(const Index: TSVGSampleSVGFromGoogleIndex;
+  const width, height: single; const BitmapScale: single): tbitmap; overload;
+begin
+  Result := TSVGSampleSVGFromGoogle.Bitmap(Index, width, height, BitmapScale);
+end;
+
 initialization
 
 SetLength(SVGSampleSVGFromGoogle, 7);
@@ -213,5 +254,7 @@ SVGSampleSVGFromGoogle[CSVGBookmark] := '''
 SVGSampleSVGFromGoogle[CSVGBroadcast] := '''
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 10C10.9 10 10 10.9 10 12S10.9 14 12 14 14 13.1 14 12 13.1 10 12 10M18 12C18 8.7 15.3 6 12 6S6 8.7 6 12C6 14.2 7.2 16.1 9 17.2L10 15.5C8.8 14.8 8 13.5 8 12.1C8 9.9 9.8 8.1 12 8.1S16 9.9 16 12.1C16 13.6 15.2 14.9 14 15.5L15 17.2C16.8 16.2 18 14.2 18 12M12 2C6.5 2 2 6.5 2 12C2 15.7 4 18.9 7 20.6L8 18.9C5.6 17.5 4 14.9 4 12C4 7.6 7.6 4 12 4S20 7.6 20 12C20 15 18.4 17.5 16 18.9L17 20.6C20 18.9 22 15.7 22 12C22 6.5 17.5 2 12 2Z" /></svg>
 ''';
+
+RegisterSVGBitmap;
 
 end.
