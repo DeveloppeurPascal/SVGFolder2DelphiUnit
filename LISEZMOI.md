@@ -2,15 +2,13 @@
 
 [This page in English.](README.md)
 
-Ce programme est destiné à des développeurs Delphi désireux d'intégrer des images vectorielles (sous forme de SVG) dans leurs projets.
+Ce programme est destiné à des développeurs Delphi (ou Pascal) désireux d'intégrer des images vectorielles (sous forme de SVG) dans leurs projets.
 
 Il génère une unité à partir de la liste des fichiers SVG contenus dans un dossier.
 
-Un liste des SVG est créé sous forme de tableau de chaînes de caractères[^1] contenant le code source textuel de chaque image vectorielle.
+Un liste des SVG est créé sous forme de tableau de chaînes de caractères contenant le code source textuel de chaque image vectorielle.
 
 Des constantes et une énumération reprenant le nom de l'unité et les noms des fichiers SVG fournissent les indices du code source associé dans la liste. C'est plus simple pour s'y retrouver et en gérer plusieurs dans un même projet.
-
-[^1]: Le code généré est compatible avec Delphi 12 Athens et les versions suivantes. Les chaînes de caractères utilisées sont des chaînes multiligne et non des chaînes Pascal classiques pour simplifier la génération (rien ne vous empêche de faire un fork de ce projet et modifier cette partie pour vous si besoin).
 
 Ce dépôt de code contient un projet développé en langage Pascal Objet sous Delphi. Vous ne savez pas ce qu'est Dephi ni où le télécharger ? Vous en saurez plus [sur ce site web](https://delphi-resources.developpeur-pascal.fr/).
 

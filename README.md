@@ -2,15 +2,13 @@
 
 [Cette page en français.](LISEZMOI.md)
 
-This program is designed for Delphi developers wishing to use vector images (in SVG format) into their projects.
+This program is designed for Delphi (or Pascal) developers wishing to use vector images (in SVG format) into their projects.
 
 It generates a unit from the list of SVG files contained in a folder.
 
-An SVG list is created as an array of strings[^1] containing the textual source code of each vector image.
+An SVG list is created as an array of strings containing the textual source code of each vector image.
 
 Constants and an enumeration containing the unit name and the SVG file names provide the indices of the associated source code in the list. This makes it easier to find your way around and manage several SVG lists in a single project.
-
-[^1]: The generated code is compatible with Delphi 12 Athens and later. The strings used are multiline strings and not classic Pascal strings to simplify generation (nothing prevents you from forking this project and modifying this part for yourself if you need to).
 
 This code repository contains a project developed in Object Pascal language under Delphi. You don't know what Delphi is and where to download it ? You'll learn more [on this web site](https://delphi-resources.developpeur-pascal.fr/).
 
