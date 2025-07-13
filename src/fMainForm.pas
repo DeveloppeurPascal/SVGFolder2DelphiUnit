@@ -45,8 +45,8 @@
   https://github.com/DeveloppeurPascal/SVGFolder2DelphiUnit
 
   ***************************************************************************
-  File last update : 2025-07-13T14:46:20.000+02:00
-  Signature : 5da00f95829559e2beed1e39af1670202112bcd6
+  File last update : 2025-07-13T15:31:44.000+02:00
+  Signature : bf693de2fb8d9a8cce1b06f86bd7f278bb7261eb
   ***************************************************************************
 *)
 
@@ -96,6 +96,8 @@ type
     lblGeneratedName: TLabel;
     edtGeneratedName: TEdit;
     cbUseMultilineStrings: TCheckBox;
+    cbGenerateOlfSkiaSVGToBitmapCode: TCheckBox;
+    btnDownloadOlfSkiaSVGToBitmapUnit: TButton;
     procedure FormCreate(Sender: TObject);
     procedure btnAboutClick(Sender: TObject);
     procedure btnAddFolderClick(Sender: TObject);
@@ -106,6 +108,7 @@ type
       const Data: TDragObject; const Point: TPointF);
     procedure btnRemoveFolderClick(Sender: TObject);
     procedure btnExportClick(Sender: TObject);
+    procedure btnDownloadOlfSkiaSVGToBitmapUnitClick(Sender: TObject);
   private
   protected
     procedure ResetFields;
@@ -124,7 +127,8 @@ implementation
 
 uses
   System.IOUtils,
-  uSF2DUExport;
+  uSF2DUExport,
+  u_urlOpen;
 
 procedure TMainForm.AddFolderToList(const Folder: string);
 var
@@ -184,7 +188,8 @@ begin
   begin
     ExportFoldersToPascalUnit(lbFoldersToImport.Items.ToStringArray,
       sdDestUnit.FileName, edtGeneratedName.Text,
-      cbUseMultilineStrings.IsChecked);
+      cbUseMultilineStrings.IsChecked,
+      cbGenerateOlfSkiaSVGToBitmapCode.IsChecked);
     ShowMessage('Export terminé');
   end;
 end;
@@ -193,6 +198,12 @@ procedure TMainForm.btnRemoveFolderClick(Sender: TObject);
 begin
   if assigned(lbFoldersToImport.Selected) then
     lbFoldersToImport.Selected.Free;
+end;
+
+procedure TMainForm.btnDownloadOlfSkiaSVGToBitmapUnitClick(Sender: TObject);
+begin
+  url_Open_In_Browser
+    ('https://github.com/DeveloppeurPascal/librairies/blob/master/src/Olf.Skia.SVGToBitmap.pas');
 end;
 
 procedure TMainForm.DoDocumentNewAction(Sender: TObject);
@@ -234,6 +245,7 @@ begin
   lbFoldersToImport.Clear;
   edtGeneratedName.Text := '';
   cbUseMultilineStrings.IsChecked := true;
+  cbGenerateOlfSkiaSVGToBitmapCode.IsChecked := false;
 end;
 
 procedure TMainForm.TranslateTexts(const Language: string);
@@ -250,6 +262,9 @@ begin
     lblGeneratedName.Text := 'Préfixe des constantes, classes et types générés';
     cbUseMultilineStrings.Text :=
       'Exporter des chaînes multilignes (Delphi 12 Athens et au delà)';
+    cbGenerateOlfSkiaSVGToBitmapCode.Text :=
+      'Générer les méthodes "Register" et "GetBitmap" utilisant l''unité Olf.Skia.SVGToBitmap';
+    btnDownloadOlfSkiaSVGToBitmapUnit.Text := 'Télécharger';
   end
   else
   begin
@@ -263,6 +278,9 @@ begin
       'Prefix for generated constants, classes and types';
     cbUseMultilineStrings.Text :=
       'Export multiline strings (Delphi 12 Athens and higher)';
+    cbGenerateOlfSkiaSVGToBitmapCode.Text :=
+      'Generate "Register" and "GetBitmap" methods to use with Olf.Skia.SVGToBitmap unit';
+    btnDownloadOlfSkiaSVGToBitmapUnit.Text := 'Download';
   end;
 end;
 

@@ -134,6 +134,28 @@ inherited MainForm: TMainForm
       TabOrder = 5
       Text = 'cbUseMultilineStrings'
     end
+    object cbGenerateOlfSkiaSVGToBitmapCode: TCheckBox
+      Align = Top
+      Margins.Top = 10.000000000000000000
+      Position.X = 5.000000000000000000
+      Position.Y = 360.000000000000000000
+      Size.Width = 630.000000000000000000
+      Size.Height = 19.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 6
+      Text = 'cbGenerateOlfSkiaSVGToBitmapCode'
+      object btnDownloadOlfSkiaSVGToBitmapUnit: TButton
+        Align = Right
+        Position.X = 550.000000000000000000
+        Size.Width = 80.000000000000000000
+        Size.Height = 19.000000000000000000
+        Size.PlatformDefault = False
+        TabOrder = 19
+        Text = 'btnDownloadOlfSkiaSVGToBitmapUnit'
+        TextSettings.Trimming = None
+        OnClick = btnDownloadOlfSkiaSVGToBitmapUnitClick
+      end
+    end
   end
   object tbHeader: TToolBar [2]
     Size.Width = 640.000000000000000000
