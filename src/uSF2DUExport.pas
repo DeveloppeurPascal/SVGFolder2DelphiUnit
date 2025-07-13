@@ -45,8 +45,8 @@
   https://github.com/DeveloppeurPascal/SVGFolder2DelphiUnit
 
   ***************************************************************************
-  File last update : 2025-07-13T12:24:18.000+02:00
-  Signature : aa93bb532d476cda06dd76c423780807cec69a9a
+  File last update : 2025-07-13T13:35:04.000+02:00
+  Signature : e9681c122b7784a9576ff93e8ec6c4eefd454799
   ***************************************************************************
 *)
 
@@ -71,6 +71,39 @@ uses
   System.SysUtils,
   uConsts,
   System.DateUtils;
+
+function GetRelativePath(const ForPath, CurrentPath: string): string;
+var
+  i, j: integer;
+begin
+  i := 0;
+  j := 0;
+  while (i < length(ForPath)) and (i < length(CurrentPath)) and
+    (ForPath.Chars[i] = CurrentPath.Chars[i]) do
+  begin
+    if ForPath.Chars[i] = tpath.DirectorySeparatorChar then
+      j := i;
+    inc(i);
+  end;
+  if (i < length(ForPath)) or ((i < length(CurrentPath)) and (CurrentPath.Chars[i] <> tpath.DirectorySeparatorChar)) then
+  begin
+    result := ForPath.Substring(j + 1);
+    i := j + 1;
+  end
+  else
+    result := '';
+  while (i < length(CurrentPath)) do
+  begin
+    if CurrentPath.Chars[i] = tpath.DirectorySeparatorChar then
+      if result.IsEmpty then
+        result := '.' + tpath.DirectorySeparatorChar
+      else if result = '.' + tpath.DirectorySeparatorChar then
+        result := '.' + result
+      else
+        result := '..' + tpath.DirectorySeparatorChar + result;
+    inc(i);
+  end;
+end;
 
 function OnlyChar(const S: string): string;
 var
@@ -184,7 +217,9 @@ begin
         DestinationUnit.add('');
         DestinationUnit.add('// ****************************************');
         DestinationUnit.add('// * SVG from folder :');
-        DestinationUnit.add('// * ' + ToUnitFilePath);
+        for i := 0 to length(SVGFolders) - 1 do
+          DestinationUnit.add('// * ' + GetRelativePath(SVGFolders[i],
+            ToUnitFilePath));
         DestinationUnit.add('// ****************************************');
         DestinationUnit.add('//');
         DestinationUnit.add('// This file contains a list of contants and ');
