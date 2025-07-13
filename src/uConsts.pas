@@ -45,8 +45,8 @@
   https://github.com/DeveloppeurPascal/SVGFolder2DelphiUnit
 
   ***************************************************************************
-  File last update : 2025-07-13T10:29:52.000+02:00
-  Signature : 49b9cf95a459c2a81c3e6053c59e4b9edcb397a4
+  File last update : 2025-07-13T13:09:50.000+02:00
+  Signature : f750dbe64748f6ed3096561f50211d89d9bb8925
   ***************************************************************************
 *)
 
@@ -99,12 +99,13 @@ const
   /// The URL where you can buy the software.
   /// (if not empty, a "Buy" button is added in the About Box)
   /// </summary>
-  CSoftwareBuyURL = 'https://store.olfsoftware.fr/en/developer-software-c-3/delphi-development-c-4/svg-folder-to-delphi-unit-p-24';
+  CSoftwareBuyURL =
+    'https://store.olfsoftware.fr/en/developer-software-c-3/delphi-development-c-4/svg-folder-to-delphi-unit-p-24';
 
   /// <summary>
   /// Website open by Tools / Support menu option
   /// </summary>
-CSupportURL = 'https://olfsoftware.fr/contact/';
+  CSupportURL = 'https://olfsoftware.fr/contact/';
   // TODO : à rediriger vers le site final lorsqu'il sera en ligne
 
   /// <summary>
@@ -282,8 +283,11 @@ const
   /// <summary>
   /// What license manager is used by the starter kit in this project ?
   /// </summary>
+{$IFDEF RELEASE}
   CUsedLicenseManager = TLicenseManagers.CilTseg;
-
+{$ELSE}
+  CUsedLicenseManager = TLicenseManagers.None;
+{$ENDIF}
   { ****************************************************************************
     Program updates management settings
     ************************************************************************** }
