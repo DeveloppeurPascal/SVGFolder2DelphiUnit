@@ -45,8 +45,8 @@
   https://github.com/DeveloppeurPascal/SVGFolder2DelphiUnit
 
   ***************************************************************************
-  File last update : 2025-07-13T12:29:44.000+02:00
-  Signature : 3b8e0ca789fe9439b313fd0f2350b9054de932cb
+  File last update : 2025-07-13T13:46:50.000+02:00
+  Signature : dc564f557a467bd6995d35fce0a3b5a69fcbf1ff
   ***************************************************************************
 *)
 
@@ -220,7 +220,7 @@ end;
 
 procedure TMainForm.ResetFields;
 begin
-  // TODO : à compléter
+  lbFoldersToImport.Clear;
 end;
 
 procedure TMainForm.TranslateTexts(const Language: string);
