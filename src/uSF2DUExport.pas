@@ -45,8 +45,8 @@
   https://github.com/DeveloppeurPascal/SVGFolder2DelphiUnit
 
   ***************************************************************************
-  File last update : 2025-07-13T11:47:18.000+02:00
-  Signature : e7a1c3271e9924351d64b5de3c5e99cb91fa2329
+  File last update : 2025-07-13T12:24:18.000+02:00
+  Signature : aa93bb532d476cda06dd76c423780807cec69a9a
   ***************************************************************************
 *)
 
@@ -54,7 +54,13 @@ unit uSF2DUExport;
 
 interface
 
-procedure ExportFoldersToPascalUnit;
+uses
+  System.Types;
+
+procedure ExportFoldersToPascalUnit(const SVGFolders: TStringDynArray;
+  const ToUnitFilePath, TabName: string);
+
+function OnlyChar(const S: string): string;
 
 implementation
 
@@ -63,7 +69,8 @@ uses
   System.IOUtils,
   System.Character,
   System.SysUtils,
-  System.Types;
+  uConsts,
+  System.DateUtils;
 
 function OnlyChar(const S: string): string;
 var
@@ -144,241 +151,213 @@ begin
     result := result + ' ';
 end;
 
-procedure ExportFoldersToPascalUnit;
+procedure ExportFoldersToPascalUnit(const SVGFolders: TStringDynArray;
+  const ToUnitFilePath, TabName: string);
 var
-  SourceFolder, SourceFolderName: string;
   Files: TStringDynArray;
-  SVGFilesList: TStringList;
-  i: integer;
+  SVGList: TStringList;
+  i, j: integer;
   DestinationUnit: TStringList;
-  UnitFilePath, UnitFileName: string;
-  ArrayName: string;
+  UnitFileName: string;
 begin
-  Files := tdirectory.GetFiles(SourceFolder);
-  if (length(Files) > 0) then
-  begin
-    SaveDialog1.InitialDir := SourceFolder;
-    SourceFolderName := OnlyChar(tpath.GetFileName(SourceFolder));
-    // SaveDialog1.FileName := tpath.combine(SourceFolder,
-    // 'uSVG' + SourceFolderName + '.pas');
-    SaveDialog1.FileName := 'uSVG' + SourceFolderName + '.pas';
-    if SaveDialog1.Execute then
+  if (length(SVGFolders) < 1) or ToUnitFilePath.IsEmpty then
+    exit;
+
+  SVGList := TStringList.Create;
+  try
+    for i := 0 to length(SVGFolders) - 1 do
     begin
-      UnitFileName :=
-        OnlyChar(tpath.GetFileNameWithoutExtension(SaveDialog1.FileName));
-      UnitFilePath := tpath.combine
-        (tpath.GetDirectoryName(SaveDialog1.FileName), UnitFileName + '.pas');
+      Files := tdirectory.GetFiles(SVGFolders[i]);
+      for j := 0 to length(Files) - 1 do
+        if Files[j].ToLower.EndsWith('.svg') then
+          SVGList.add(Files[j]);
+    end;
 
-      SVGFilesList := TStringList.Create;
+    UnitFileName := OnlyChar(tpath.GetFileNameWithoutExtension(ToUnitFilePath));
+
+    if (SVGList.Count > 0) then
+    begin
+      SVGList.Sort;
+      DestinationUnit := TStringList.Create;
       try
-        for i := 0 to length(Files) - 1 do
-          if Files[i].ToLower.EndsWith('.svg') then
-            SVGFilesList.add(Files[i]);
-
-        if (SVGFilesList.Count > 0) then
+        DestinationUnit.add('unit ' + UnitFileName + ';');
+        DestinationUnit.add('');
+        DestinationUnit.add('// ****************************************');
+        DestinationUnit.add('// * SVG from folder :');
+        DestinationUnit.add('// * ' + ToUnitFilePath);
+        DestinationUnit.add('// ****************************************');
+        DestinationUnit.add('//');
+        DestinationUnit.add('// This file contains a list of contants and ');
+        DestinationUnit.add('// an enumeration to access to SVG source codes ');
+        DestinationUnit.add('// from the generated array of strings.');
+        DestinationUnit.add('//');
+        DestinationUnit.add('// ****************************************');
+        DestinationUnit.add('// File generator : ' + CAboutTitle + ' v' +
+          CAboutVersionNumber);
+        DestinationUnit.add('// Website : ' + CAboutURL);
+        DestinationUnit.add('// Generation date : ' + DateToISO8601(now, true));
+        DestinationUnit.add('//');
+        DestinationUnit.add('// Don''t do any change on this file.');
+        DestinationUnit.add('// They will be erased by next generation !');
+        DestinationUnit.add('// ****************************************');
+        DestinationUnit.add('');
+        DestinationUnit.add('interface');
+        DestinationUnit.add('');
+        DestinationUnit.add('const');
+        for i := 0 to SVGList.Count - 1 do
+          DestinationUnit.add(AddSpace(2) + getConstantName(SVGList[i]) + ' = '
+            + i.ToString + ';');
+        DestinationUnit.add('');
+        DestinationUnit.add('type');
+        DestinationUnit.add('{$SCOPEDENUMS ON}');
+        DestinationUnit.add(AddSpace(2) + 'T' + TabName + 'Index = (');
+        for i := 0 to SVGList.Count - 1 do
+          if (i < SVGList.Count - 1) then
+            DestinationUnit.add(AddSpace(4) +
+              OnlyChar(tpath.GetFileNameWithoutExtension(SVGList[i])) + ' = ' +
+              getConstantName(SVGList[i]) + ',')
+          else
+            DestinationUnit.add(AddSpace(4) +
+              OnlyChar(tpath.GetFileNameWithoutExtension(SVGList[i])) + ' = ' +
+              getConstantName(SVGList[i]) + ');');
+        DestinationUnit.add('');
+        DestinationUnit.add(AddSpace(2) + 'T' + TabName + ' = class');
+        DestinationUnit.add(AddSpace(2) + 'private');
+        DestinationUnit.add(AddSpace(2) + 'class var');
+        DestinationUnit.add(AddSpace(4) + 'FTag: integer;');
+        DestinationUnit.add(AddSpace(4) + 'FTagBool: Boolean;');
+        DestinationUnit.add(AddSpace(4) + 'FTagFloat: Single;');
+        DestinationUnit.add(AddSpace(4) + 'FTagObject: TObject;');
+        DestinationUnit.add(AddSpace(4) + 'FTagString: string;');
+        DestinationUnit.add(AddSpace(4) +
+          'class procedure SetTag(const Value: integer); static;');
+        DestinationUnit.add(AddSpace(4) +
+          'class procedure SetTagBool(const Value: Boolean); static;');
+        DestinationUnit.add(AddSpace(4) +
+          'class procedure SetTagFloat(const Value: Single); static;');
+        DestinationUnit.add(AddSpace(4) +
+          'class procedure SetTagObject(const Value: TObject); static;');
+        DestinationUnit.add(AddSpace(4) +
+          'class procedure SetTagString(const Value: string); static;');
+        DestinationUnit.add(AddSpace(2) + 'public const');
+        for i := 0 to SVGList.Count - 1 do
+          DestinationUnit.add(AddSpace(4) +
+            OnlyChar(tpath.GetFileNameWithoutExtension(SVGList[i])) + ' = ' +
+            getConstantName(SVGList[i]) + ';');
+        DestinationUnit.add(AddSpace(4) +
+          'class property Tag: integer read FTag write SetTag;');
+        DestinationUnit.add(AddSpace(4) +
+          'class property TagBool: Boolean read FTagBool write SetTagBool;');
+        DestinationUnit.add(AddSpace(4) +
+          'class property TagFloat: Single read FTagFloat write SetTagFloat;');
+        DestinationUnit.add(AddSpace(4) +
+          'class property TagObject: TObject read FTagObject write SetTagObject;');
+        DestinationUnit.add(AddSpace(4) +
+          'class property TagString: string read FTagString write SetTagString;');
+        DestinationUnit.add(AddSpace(4) +
+          'class function SVG(const Index: Integer): string; overload;');
+        DestinationUnit.add(AddSpace(4) + 'class function SVG(const Index: T' +
+          TabName + 'Index) : string; overload;');
+        DestinationUnit.add(AddSpace(4) + 'class function Count : Integer;');
+        DestinationUnit.add(AddSpace(4) + 'class constructor Create;');
+        DestinationUnit.add(AddSpace(2) + 'end;');
+        DestinationUnit.add('');
+        DestinationUnit.add('var');
+        DestinationUnit.add(AddSpace(2) + TabName + ' : array of String;');
+        DestinationUnit.add('');
+        DestinationUnit.add('implementation');
+        DestinationUnit.add('');
+        DestinationUnit.add('uses');
+        DestinationUnit.add(AddSpace(2) + 'System.SysUtils;');
+        DestinationUnit.add('');
+        DestinationUnit.add('{ T' + TabName + ' }');
+        DestinationUnit.add('');
+        DestinationUnit.add('class constructor T' + TabName + '.Create;');
+        DestinationUnit.add('begin');
+        DestinationUnit.add(AddSpace(2) + 'inherited;');
+        DestinationUnit.add(AddSpace(2) + 'FTag := 0;');
+        DestinationUnit.add(AddSpace(2) + 'FTagBool := false;');
+        DestinationUnit.add(AddSpace(2) + 'FTagFloat := 0;');
+        DestinationUnit.add(AddSpace(2) + 'FTagObject := nil;');
+        DestinationUnit.add(AddSpace(2) + 'FTagString := '''';');
+        DestinationUnit.add('end;');
+        DestinationUnit.add('');
+        DestinationUnit.add('class procedure T' + TabName +
+          '.SetTag(const Value: integer);');
+        DestinationUnit.add('begin');
+        DestinationUnit.add(AddSpace(2) + 'FTag := Value;');
+        DestinationUnit.add('end;');
+        DestinationUnit.add('');
+        DestinationUnit.add('class procedure T' + TabName +
+          '.SetTagBool(const Value: Boolean);');
+        DestinationUnit.add('begin');
+        DestinationUnit.add(AddSpace(2) + 'FTagBool := Value;');
+        DestinationUnit.add('end;');
+        DestinationUnit.add('');
+        DestinationUnit.add('class procedure T' + TabName +
+          '.SetTagFloat(const Value: Single);');
+        DestinationUnit.add('begin');
+        DestinationUnit.add(AddSpace(2) + 'FTagFloat := Value;');
+        DestinationUnit.add('end;');
+        DestinationUnit.add('');
+        DestinationUnit.add('class procedure T' + TabName +
+          '.SetTagObject(const Value: TObject);');
+        DestinationUnit.add('begin');
+        DestinationUnit.add(AddSpace(2) + 'FTagObject := Value;');
+        DestinationUnit.add('end;');
+        DestinationUnit.add('');
+        DestinationUnit.add('class procedure T' + TabName +
+          '.SetTagString(const Value: string);');
+        DestinationUnit.add('begin');
+        DestinationUnit.add(AddSpace(2) + 'FTagString := Value;');
+        DestinationUnit.add('end;');
+        DestinationUnit.add('');
+        DestinationUnit.add('class function T' + TabName +
+          '.SVG(const Index: Integer): string;');
+        DestinationUnit.add('begin');
+        DestinationUnit.add(AddSpace(2) + 'if (index < Count) then');
+        DestinationUnit.add(AddSpace(2) + '  result := ' + TabName + '[index]');
+        DestinationUnit.add(AddSpace(2) + 'else');
+        DestinationUnit.add(AddSpace(2) +
+          '  raise Exception.Create(''SVG not found. Index out of range.'');');
+        DestinationUnit.add('end;');
+        DestinationUnit.add('');
+        DestinationUnit.add('class function T' + TabName +
+          '.SVG(const Index : T' + TabName + 'Index): string;');
+        DestinationUnit.add('begin');
+        DestinationUnit.add(AddSpace(2) + 'result := SVG(ord(index));');
+        DestinationUnit.add('end;');
+        DestinationUnit.add('');
+        DestinationUnit.add('class function T' + TabName + '.Count: Integer;');
+        DestinationUnit.add('begin');
+        DestinationUnit.add(AddSpace(2) + 'result := length(' + TabName + ');');
+        DestinationUnit.add('end;');
+        DestinationUnit.add('');
+        DestinationUnit.add('initialization');
+        DestinationUnit.add('');
+        DestinationUnit.add('SetLength(' + TabName + ', ' +
+          SVGList.Count.ToString + ');');
+        DestinationUnit.add('');
+        DestinationUnit.add('{$TEXTBLOCK NATIVE XML}');
+        for i := 0 to SVGList.Count - 1 do
         begin
-          SVGFilesList.Sort;
-          DestinationUnit := TStringList.Create;
-          try
-            DestinationUnit.add('unit ' + UnitFileName + ';');
-            DestinationUnit.add('');
-            DestinationUnit.add('// ****************************************');
-            DestinationUnit.add('// * SVG from folder :');
-            DestinationUnit.add('// * ' + SaveDialog1.FileName);
-            DestinationUnit.add('// ****************************************');
-            DestinationUnit.add('//');
-            DestinationUnit.add
-              ('// This file contains a list of contants and ');
-            DestinationUnit.add
-              ('// an enumeration to access to SVG source codes ');
-            DestinationUnit.add('// from the generated array of strings.');
-            DestinationUnit.add('//');
-            DestinationUnit.add('// ****************************************');
-            DestinationUnit.add('// File generator : ' +
-              TAboutBox.Current.OlfAboutDialog1.GetMainFormCaption);
-            DestinationUnit.add('// Website : ' +
-              TAboutBox.Current.OlfAboutDialog1.URL);
-            DestinationUnit.add('// Generation date : ' +
-              DateToISO8601(now, true));
-            DestinationUnit.add('//');
-            DestinationUnit.add('// Don''t do any change on this file.');
-            DestinationUnit.add('// They will be erased by next generation !');
-            DestinationUnit.add('// ****************************************');
-            DestinationUnit.add('');
-            DestinationUnit.add('interface');
-            DestinationUnit.add('');
-            DestinationUnit.add('const');
-            for i := 0 to SVGFilesList.Count - 1 do
-              DestinationUnit.add(AddSpace(2) + getConstantName(SVGFilesList[i])
-                + ' = ' + i.ToString + ';');
-            ArrayName := 'SVG' + SourceFolderName;
-            DestinationUnit.add('');
-            DestinationUnit.add('type');
-            DestinationUnit.add('{$SCOPEDENUMS ON}');
-            DestinationUnit.add(AddSpace(2) + 'T' + ArrayName + 'Index = (');
-            for i := 0 to SVGFilesList.Count - 1 do
-              if (i < SVGFilesList.Count - 1) then
-                DestinationUnit.add
-                  (AddSpace(4) + OnlyChar(tpath.GetFileNameWithoutExtension
-                  (SVGFilesList[i])) + ' = ' +
-                  getConstantName(SVGFilesList[i]) + ',')
-              else
-                DestinationUnit.add
-                  (AddSpace(4) + OnlyChar(tpath.GetFileNameWithoutExtension
-                  (SVGFilesList[i])) + ' = ' +
-                  getConstantName(SVGFilesList[i]) + ');');
-            DestinationUnit.add('');
-            DestinationUnit.add(AddSpace(2) + 'T' + ArrayName + ' = class');
-            DestinationUnit.add(AddSpace(2) + 'private');
-            DestinationUnit.add(AddSpace(2) + 'class var');
-            DestinationUnit.add(AddSpace(4) + 'FTag: integer;');
-            DestinationUnit.add(AddSpace(4) + 'FTagBool: Boolean;');
-            DestinationUnit.add(AddSpace(4) + 'FTagFloat: Single;');
-            DestinationUnit.add(AddSpace(4) + 'FTagObject: TObject;');
-            DestinationUnit.add(AddSpace(4) + 'FTagString: string;');
-            DestinationUnit.add(AddSpace(4) +
-              'class procedure SetTag(const Value: integer); static;');
-            DestinationUnit.add(AddSpace(4) +
-              'class procedure SetTagBool(const Value: Boolean); static;');
-            DestinationUnit.add(AddSpace(4) +
-              'class procedure SetTagFloat(const Value: Single); static;');
-            DestinationUnit.add(AddSpace(4) +
-              'class procedure SetTagObject(const Value: TObject); static;');
-            DestinationUnit.add(AddSpace(4) +
-              'class procedure SetTagString(const Value: string); static;');
-            DestinationUnit.add(AddSpace(2) + 'public const');
-            for i := 0 to SVGFilesList.Count - 1 do
-              DestinationUnit.add
-                (AddSpace(4) + OnlyChar(tpath.GetFileNameWithoutExtension
-                (SVGFilesList[i])) + ' = ' +
-                getConstantName(SVGFilesList[i]) + ';');
-            DestinationUnit.add(AddSpace(4) +
-              'class property Tag: integer read FTag write SetTag;');
-            DestinationUnit.add(AddSpace(4) +
-              'class property TagBool: Boolean read FTagBool write SetTagBool;');
-            DestinationUnit.add(AddSpace(4) +
-              'class property TagFloat: Single read FTagFloat write SetTagFloat;');
-            DestinationUnit.add(AddSpace(4) +
-              'class property TagObject: TObject read FTagObject write SetTagObject;');
-            DestinationUnit.add(AddSpace(4) +
-              'class property TagString: string read FTagString write SetTagString;');
-            DestinationUnit.add(AddSpace(4) +
-              'class function SVG(const Index: Integer): string; overload;');
-            DestinationUnit.add(AddSpace(4) +
-              'class function SVG(const Index: T' + ArrayName +
-              'Index) : string; overload;');
-            DestinationUnit.add(AddSpace(4) +
-              'class function Count : Integer;');
-            DestinationUnit.add(AddSpace(4) + 'class constructor Create;');
-            DestinationUnit.add(AddSpace(2) + 'end;');
-            DestinationUnit.add('');
-            DestinationUnit.add('var');
-            DestinationUnit.add(AddSpace(2) + ArrayName +
-              ' : array of String;');
-            DestinationUnit.add('');
-            DestinationUnit.add('implementation');
-            DestinationUnit.add('');
-            DestinationUnit.add('uses');
-            DestinationUnit.add(AddSpace(2) + 'System.SysUtils;');
-            DestinationUnit.add('');
-            DestinationUnit.add('{ T' + ArrayName + ' }');
-            DestinationUnit.add('');
-            DestinationUnit.add('class constructor T' + ArrayName + '.Create;');
-            DestinationUnit.add('begin');
-            DestinationUnit.add(AddSpace(2) + 'inherited;');
-            DestinationUnit.add(AddSpace(2) + 'FTag := 0;');
-            DestinationUnit.add(AddSpace(2) + 'FTagBool := false;');
-            DestinationUnit.add(AddSpace(2) + 'FTagFloat := 0;');
-            DestinationUnit.add(AddSpace(2) + 'FTagObject := nil;');
-            DestinationUnit.add(AddSpace(2) + 'FTagString := '''';');
-            DestinationUnit.add('end;');
-            DestinationUnit.add('');
-            DestinationUnit.add('class procedure T' + ArrayName +
-              '.SetTag(const Value: integer);');
-            DestinationUnit.add('begin');
-            DestinationUnit.add(AddSpace(2) + 'FTag := Value;');
-            DestinationUnit.add('end;');
-            DestinationUnit.add('');
-            DestinationUnit.add('class procedure T' + ArrayName +
-              '.SetTagBool(const Value: Boolean);');
-            DestinationUnit.add('begin');
-            DestinationUnit.add(AddSpace(2) + 'FTagBool := Value;');
-            DestinationUnit.add('end;');
-            DestinationUnit.add('');
-            DestinationUnit.add('class procedure T' + ArrayName +
-              '.SetTagFloat(const Value: Single);');
-            DestinationUnit.add('begin');
-            DestinationUnit.add(AddSpace(2) + 'FTagFloat := Value;');
-            DestinationUnit.add('end;');
-            DestinationUnit.add('');
-            DestinationUnit.add('class procedure T' + ArrayName +
-              '.SetTagObject(const Value: TObject);');
-            DestinationUnit.add('begin');
-            DestinationUnit.add(AddSpace(2) + 'FTagObject := Value;');
-            DestinationUnit.add('end;');
-            DestinationUnit.add('');
-            DestinationUnit.add('class procedure T' + ArrayName +
-              '.SetTagString(const Value: string);');
-            DestinationUnit.add('begin');
-            DestinationUnit.add(AddSpace(2) + 'FTagString := Value;');
-            DestinationUnit.add('end;');
-            DestinationUnit.add('');
-            DestinationUnit.add('class function T' + ArrayName +
-              '.SVG(const Index: Integer): string;');
-            DestinationUnit.add('begin');
-            DestinationUnit.add(AddSpace(2) + 'if (index < Count) then');
-            DestinationUnit.add(AddSpace(2) + '  result := ' + ArrayName +
-              '[index]');
-            DestinationUnit.add(AddSpace(2) + 'else');
-            DestinationUnit.add(AddSpace(2) +
-              '  raise Exception.Create(''SVG not found. Index out of range.'');');
-            DestinationUnit.add('end;');
-            DestinationUnit.add('');
-            DestinationUnit.add('class function T' + ArrayName +
-              '.SVG(const Index : T' + ArrayName + 'Index): string;');
-            DestinationUnit.add('begin');
-            DestinationUnit.add(AddSpace(2) + 'result := SVG(ord(index));');
-            DestinationUnit.add('end;');
-            DestinationUnit.add('');
-            DestinationUnit.add('class function T' + ArrayName +
-              '.Count: Integer;');
-            DestinationUnit.add('begin');
-            DestinationUnit.add(AddSpace(2) + 'result := length(' +
-              ArrayName + ');');
-            DestinationUnit.add('end;');
-            DestinationUnit.add('');
-            DestinationUnit.add('initialization');
-            DestinationUnit.add('');
-            DestinationUnit.add('SetLength(' + ArrayName + ', ' +
-              SVGFilesList.Count.ToString + ');');
-            DestinationUnit.add('');
-            DestinationUnit.add('{$TEXTBLOCK NATIVE XML}');
-            for i := 0 to SVGFilesList.Count - 1 do
-            begin
-              DestinationUnit.add(ArrayName + '[' +
-                getConstantName(SVGFilesList[i]) + '] := ''''''');
-              AjouteSVGSource(SVGFilesList[i], DestinationUnit);
-              DestinationUnit.add(''''''';');
-            end;
-            DestinationUnit.add('');
-            DestinationUnit.add('end.');
-            DestinationUnit.SaveToFile(UnitFilePath);
-          finally
-            DestinationUnit.Free;
-          end;
-        end
-        else
-          raise exception.Create('No SVG in "' + SourceFolder + '" !');
+          DestinationUnit.add(TabName + '[' + getConstantName(SVGList[i]) +
+            '] := ''''''');
+          AjouteSVGSource(SVGList[i], DestinationUnit);
+          DestinationUnit.add(''''''';');
+        end;
+        DestinationUnit.add('');
+        DestinationUnit.add('end.');
+        DestinationUnit.SaveToFile(ToUnitFilePath);
       finally
-        SVGFilesList.Free;
+        DestinationUnit.Free;
       end;
-      ShowMessage('Unit "' + tpath.GetFileName(UnitFilePath) + '" generated.');
     end
     else
-      raise exception.Create('Destination unit is needed !');
-  end
-  else
-    raise exception.Create('No file in "' + SourceFolder + '" !');
+      raise exception.Create('No SVG file to export !');
+  finally
+    SVGList.Free;
+  end;
 end;
 
 end.
