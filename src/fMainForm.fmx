@@ -1,0 +1,4 @@
+inherited MainForm: TMainForm
+  Caption = '__MainFormAncestor1'
+  DesignerMasterStyle = 0
+end
