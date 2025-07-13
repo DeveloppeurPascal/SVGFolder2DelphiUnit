@@ -45,8 +45,8 @@
   https://github.com/DeveloppeurPascal/SVGFolder2DelphiUnit
 
   ***************************************************************************
-  File last update : 2025-07-13T15:07:48.000+02:00
-  Signature : d746472bcf3863b87a25d30cca9d80bb7fbe78de
+  File last update : 2025-07-13T16:02:14.000+02:00
+  Signature : d0075d7cec2241d979ec5a712235a2df1f797e66
   ***************************************************************************
 *)
 
@@ -58,7 +58,8 @@ uses
   System.Types;
 
 procedure ExportFoldersToPascalUnit(const SVGFolders: TStringDynArray;
-  const ToUnitFilePath, TabName: string; const UseMultilineString: boolean);
+  const ToUnitFilePath, TabName: string; const UseMultilineString,
+  GenerateOlfSkiaSVGToBitmapCode: boolean);
 
 function OnlyChar(const S: string; const AddUnderscoreAsFirstCharacterIfNumber
   : boolean = false): string;
@@ -215,7 +216,8 @@ begin
 end;
 
 procedure ExportFoldersToPascalUnit(const SVGFolders: TStringDynArray;
-  const ToUnitFilePath, TabName: string; const UseMultilineString: boolean);
+  const ToUnitFilePath, TabName: string; const UseMultilineString,
+  GenerateOlfSkiaSVGToBitmapCode: boolean);
 var
   Files: TStringDynArray;
   SVGList: TStringList;
@@ -269,6 +271,22 @@ begin
         DestinationUnit.add('');
         DestinationUnit.add('interface');
         DestinationUnit.add('');
+        if GenerateOlfSkiaSVGToBitmapCode then
+        begin
+          DestinationUnit.add('{$IF Defined(FRAMEWORK_VCL)}');
+          DestinationUnit.add('');
+          DestinationUnit.add('uses');
+          DestinationUnit.add(AddSpace(2) + 'VCL.Graphics;');
+          DestinationUnit.add('{$ELSE IF Defined(FRAMEWORK_FMX)}');
+          DestinationUnit.add('');
+          DestinationUnit.add('uses');
+          DestinationUnit.add(AddSpace(2) + 'FMX.Graphics;');
+          DestinationUnit.add('{$ELSE}');
+          DestinationUnit.add
+            ('{$MESSAGE FATAL ''Is it a VCL or FMX program ?''}');
+          DestinationUnit.add('{$ENDIF}');
+          DestinationUnit.add('');
+        end;
         DestinationUnit.add('const');
         for i := 0 to SVGList.Count - 1 do
           DestinationUnit.add(AddSpace(2) + getConstantName(SVGList[i]) + ' = '
@@ -295,6 +313,8 @@ begin
         DestinationUnit.add(AddSpace(4) + 'FTagFloat: Single;');
         DestinationUnit.add(AddSpace(4) + 'FTagObject: TObject;');
         DestinationUnit.add(AddSpace(4) + 'FTagString: string;');
+        if GenerateOlfSkiaSVGToBitmapCode then
+          DestinationUnit.add(AddSpace(4) + 'FBitmapListIndex: integer;');
         DestinationUnit.add(AddSpace(4) +
           'class procedure SetTag(const Value: integer); static;');
         DestinationUnit.add(AddSpace(4) +
@@ -326,14 +346,35 @@ begin
           TabName + 'Index) : string; overload;');
         DestinationUnit.add(AddSpace(4) + 'class function Count : Integer;');
         DestinationUnit.add(AddSpace(4) + 'class constructor Create;');
+        if GenerateOlfSkiaSVGToBitmapCode then
+        begin
+          DestinationUnit.add(AddSpace(4) +
+            'class function Bitmap(const Index: T' + TabName + 'Index;');
+          DestinationUnit.add(AddSpace(6) +
+            'const width, height: single; const BitmapScale: single): TBitmap;');
+        end;
         DestinationUnit.add(AddSpace(2) + 'end;');
         DestinationUnit.add('');
         DestinationUnit.add('var');
         DestinationUnit.add(AddSpace(2) + TabName + ' : array of String;');
         DestinationUnit.add('');
+        if GenerateOlfSkiaSVGToBitmapCode then
+        begin
+          DestinationUnit.add('/// <summary>');
+          DestinationUnit.add('/// Returns a bitmap from a T' + TabName +
+            ' SVG file');
+          DestinationUnit.add('/// </summary>');
+          DestinationUnit.add('function getBitmapFromSVG(const Index: T' +
+            TabName + 'Index;');
+          DestinationUnit.add
+            ('  const width, height: single; const BitmapScale: single): tbitmap; overload;');
+          DestinationUnit.add('');
+        end;
         DestinationUnit.add('implementation');
         DestinationUnit.add('');
         DestinationUnit.add('uses');
+        if GenerateOlfSkiaSVGToBitmapCode then
+          DestinationUnit.add(AddSpace(2) + 'Olf.Skia.SVGToBitmap,');
         DestinationUnit.add(AddSpace(2) + 'System.SysUtils;');
         DestinationUnit.add('');
         DestinationUnit.add('{ T' + TabName + ' }');
@@ -341,6 +382,8 @@ begin
         DestinationUnit.add('class constructor T' + TabName + '.Create;');
         DestinationUnit.add('begin');
         DestinationUnit.add(AddSpace(2) + 'inherited;');
+        if GenerateOlfSkiaSVGToBitmapCode then
+          DestinationUnit.add(AddSpace(2) + 'FBitmapListIndex := 0;');
         DestinationUnit.add(AddSpace(2) + 'FTag := 0;');
         DestinationUnit.add(AddSpace(2) + 'FTagBool := false;');
         DestinationUnit.add(AddSpace(2) + 'FTagFloat := 0;');
@@ -398,6 +441,36 @@ begin
         DestinationUnit.add('begin');
         DestinationUnit.add(AddSpace(2) + 'result := length(' + TabName + ');');
         DestinationUnit.add('end;');
+        if GenerateOlfSkiaSVGToBitmapCode then
+        begin
+          DestinationUnit.add('');
+          DestinationUnit.add('class function T' + TabName +
+            '.Bitmap(const Index: T' + TabName + 'Index;');
+          DestinationUnit.add(AddSpace(2) +
+            'const width, height: single; const BitmapScale: single): TBitmap;');
+          DestinationUnit.add('begin');
+          DestinationUnit.add(AddSpace(2) +
+            'result := TOlfSVGBitmapList.Bitmap(ord(Index) + T' + TabName +
+            '.FBitmapListIndex,');
+          DestinationUnit.add(AddSpace(4) +
+            'round(width), round(height), BitmapScale);');
+          DestinationUnit.add('end;');
+          DestinationUnit.add('');
+          DestinationUnit.add('procedure RegisterSVGBitmap;');
+          DestinationUnit.add('begin');
+          DestinationUnit.add(AddSpace(2) + 'T' + TabName +
+            '.FBitmapListIndex := TOlfSVGBitmapList.AddItem(' + TabName + ');');
+          DestinationUnit.add('end;');
+          DestinationUnit.add('');
+          DestinationUnit.add('function getBitmapFromSVG(const Index: T' +
+            TabName + 'Index;');
+          DestinationUnit.add
+            ('  const width, height: single; const BitmapScale: single): tbitmap; overload;');
+          DestinationUnit.add('begin');
+          DestinationUnit.add(AddSpace(2) + 'Result := T' + TabName +
+            '.Bitmap(Index, width, height, BitmapScale);');
+          DestinationUnit.add('end;');
+        end;
         DestinationUnit.add('');
         DestinationUnit.add('initialization');
         DestinationUnit.add('');
@@ -424,6 +497,11 @@ begin
           end;
         end;
         DestinationUnit.add('');
+        if GenerateOlfSkiaSVGToBitmapCode then
+        begin
+          DestinationUnit.add('RegisterSVGBitmap;');
+          DestinationUnit.add('');
+        end;
         DestinationUnit.add('end.');
         DestinationUnit.SaveToFile(ToUnitFilePath);
       finally
