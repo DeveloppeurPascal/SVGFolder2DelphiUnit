@@ -2,6 +2,19 @@
 
 [Cette page en français.](LISEZMOI.md)
 
+> [!WARNING]
+> Following Microsoft's decision to merge GitHub into its AI division in the summer of 2025 and therefore to consider what we publish on it only as a source of training for its models without any compensation (apart from hosting the source codes) or to bombard us with their injunctions to use Copilot everywhere, for everything and anything, I have decided to stop maintaining the repositories here.
+>
+> Maintenance of this project has been moved to Codeberg at https://codeberg.org/PatrickPremartin/SVGFolder2DelphiUnit
+>
+> Codeberg is a community-based hosting service located in Europe that respects developers, the license of each project, and the privacy of those who connect to it.
+
+> [!NOTE]
+> To open or work on a ticket for this project, go to https://codeberg.org/PatrickPremartin/SVGFolder2DelphiUnit/issues
+> To make a PULL REQUEST on this project, go to https://codeberg.org/PatrickPremartin/SVGFolder2DelphiUnit/pulls
+> For any other information or to contact me, you can also visit the project website at https://svgfolder2delphiunit.olfsoftware.fr or its devlog at https://svgfolder2delphiunit.olfsoftware.fr/dev-corner.html.
+> This code repository will be archived once the migration is complete and will no longer be updated on GitHub.
+
 This program is designed for Delphi (or Pascal) developers wishing to use vector images (in SVG format) into their projects.
 
 It generates a unit from the list of SVG files contained in a folder.
